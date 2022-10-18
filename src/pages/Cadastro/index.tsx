@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TouchableWithoutFeedback, Keyboard, Alert, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import * as Yup from 'yup';
-import {yupResolver} from '@hookform/resolvers/yup';
-import { cpf } from 'cpf-cnpj-validator'; 
+import { yupResolver } from '@hookform/resolvers/yup';
+import { cpf } from 'cpf-cnpj-validator';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   Container,
@@ -14,7 +15,10 @@ import {
   TextBeforeLink,
   TextLink,
   Link,
-  Onda
+  Onda,
+  LogoBox,
+  HideButton,
+  HideIcon
 } from './style';
 
 import { Logo } from '../../components/Logo';
@@ -33,44 +37,62 @@ interface FormData {
 
 const schema = Yup.object().shape({
 
-    name: Yup
+  name: Yup
     .string()
     .required('Informe o seu nome'),
 
-    CPF: Yup
+  CPF: Yup
     .string()
     .typeError('informe um valor numérico')
     .required('Informe o seu CPF'),
 
-    Email: Yup
+  Email: Yup
     .string()
     .required('Informe o seu Email'),
 
-    Password: Yup
+  Password: Yup
     .string()
     .required('Informe o sua senha'),
 
-    ConfPassword: Yup
+  ConfPassword: Yup
     .string()
     .required('Confirme sua senha'),
 
 })
 export function Cadastro() {
-
-
-  const { 
+  const {
+    formState: { errors },
     handleSubmit,
-     control,
-     formState: {errors}
-    
-    } = useForm({
+    control,
+
+  } = useForm({
     resolver: yupResolver(schema)
   })
+
+  const UserData = "@BuscaSus:Cadastro";
+
+  useEffect(() => {
+
+    async function loadData() {
+      const data = await AsyncStorage.getItem(UserData);
+      console.log(JSON.parse(data!))
+    }
+
+    loadData();
+
+    /* async function remove() {
+     await AsyncStorage.removeItem(UserData)
+   }
+
+   remove();*/
+  }, [])
+
+
   const navigation = useNavigation();
 
-  function handleRegister(form: FormData) {
+  async function handleRegister(form: FormData) {
 
- const Data = {
+    const SingUpForm = {
       name: form.name,
       CPF: cpf.format(form.CPF),
       Email: form.Email,
@@ -78,92 +100,128 @@ export function Cadastro() {
       ConfPassword: form.ConfPassword,
     }
 
-    
+    try {
 
-    if(form.ConfPassword != form.Password ){
-      return alert('Senha incorreta')
+      const data = await AsyncStorage.getItem(UserData);
+      const currentData = data ? JSON.parse(data) : [];
+
+      const dataFormatted = [
+
+        ...currentData,
+        SingUpForm
+
+      ];
+
+
+
+
+      await AsyncStorage.setItem(UserData, JSON.stringify(dataFormatted));
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Não foi possível cadastrar')
     }
 
-    if(cpf.isValid(form.CPF)){
-      return ( console.log(Data))
-    }
-    else{
-      return (alert('informe um CPF válido') )
+    if (form.ConfPassword != form.Password) {
+      return alert('Senhas diferentes, tente novamente.')
     }
 
- 
+    if (cpf.isValid(form.CPF)) {
+      return (console.log(SingUpForm))
+    }
+    else {
+      return (alert('informe um CPF válido'))
+    }
 
-   
   }
 
+  const [hidePassword, setHidePassword] = useState(true)
+  const [hideConfPassword, setHideConfPassword] = useState(true)
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
+        <KeyboardAvoidingView behavior="position" enabled>
 
-        <Logo />
+          <LogoBox>
+            <Logo />
+            <ProjectName>BuscaSUS</ProjectName>
+          </LogoBox>
+          <InputBox>
+            <InputImage name="person" />
+            <InputForm
+              name="name"
+              control={control}
+              placeholder='Nome completo'
+              autoCapitalize='sentences'
+              autoCorrect={false}
+              error={errors.name && errors.name.message}
+            />
+          </InputBox>
 
-        <ProjectName>BuscaSUS</ProjectName>
-<KeyboardAvoidingView behavior="position" enabled>
-        <InputBox>
-          <InputImage name="person" />
-          <InputForm
-            name="name"
-            control={control}
-            placeholder='Nome completo'
-            autoCapitalize='sentences'
-            autoCorrect={false}
-            error={errors.name && errors.name.message}
+          <InputBox>
+            <InputImage name="person" />
+            <InputForm
+              name="CPF"
+              control={control}
+              placeholder='CPF'
+              keyboardType='numeric'
+              error={errors.CPF && errors.CPF.message}
+              maxLength={11}
+            />
+          </InputBox>
+          <InputBox>
+            <InputImage name="email" />
+            <InputForm
+              name="Email"
+              control={control}
+              placeholder='Email'
+              error={errors.Email && errors.Email.message}
+              keyboardType='email-address'
+            />
+          </InputBox>
+
+          <InputBox>
+            <InputImage name="lock" />
+            <InputForm
+              name="Password"
+              control={control}
+              placeholder='Senha'
+              error={errors.Password && errors.Password.message}
+              secureTextEntry={hidePassword}
+            />
+            <HideButton onPress={() => setHidePassword(!hidePassword)}>
+              {
+                hidePassword ? <HideIcon name='eye' />
+                  :
+                  <HideIcon name='eye-off' />
+              }
+
+            </HideButton>
+          </InputBox>
+
+          <InputBox>
+            <InputImage name="lock" />
+            <InputForm
+              name="ConfPassword"
+              control={control}
+              placeholder='Confirmar Senha'
+              error={errors.ConfPassword && errors.ConfPassword.message}
+              secureTextEntry={hideConfPassword}
+            />
+            <HideButton onPress={() => setHideConfPassword(!hideConfPassword)}>
+              {
+                hideConfPassword ? <HideIcon name='eye' />
+                  :
+                  <HideIcon name='eye-off' />
+              }
+
+            </HideButton>
+          </InputBox>
+
+          <Button
+            Title='CADASTRAR'
+            onPress={handleSubmit(handleRegister)}
           />
-        </InputBox>
-
-        <InputBox>
-          <InputImage name="person" />
-          <InputForm
-            name="CPF"
-            control={control}
-            placeholder='CPF'
-            keyboardType='numeric'
-            error={errors.CPF && errors.CPF.message}
-            maxLength={11}
-          />
-        </InputBox>
-        <InputBox>
-          <InputImage name="email" />
-          <InputForm
-            name="Email"
-            control={control}
-            placeholder='Email'
-            error={errors.Email && errors.Email.message}
-            keyboardType='email-address'
-          />
-        </InputBox>
-
-        <InputBox>
-          <InputImage name="lock" />
-          <InputForm
-            name="Password"
-            control={control}
-            placeholder='Senha'
-            error={errors.Password && errors.Password.message}
-          
-          />
-        </InputBox>
-
-        <InputBox>
-          <InputImage name="lock" />
-          <InputForm
-            name="ConfPassword"
-            control={control}
-            placeholder='Confirmar Senha'
-            error={errors.ConfPassword && errors.ConfPassword.message}
-          />
-        </InputBox>
-</KeyboardAvoidingView>
-        <Button
-          Title='CADASTRAR'
-          onPress={handleSubmit(handleRegister)}
-        />
-
+        </KeyboardAvoidingView>
 
 
         <LinkBox>
@@ -179,7 +237,7 @@ export function Cadastro() {
 
         <Onda source={require('../../assets/onda.png')} />
 
-      
+
       </Container>
     </TouchableWithoutFeedback>
   );

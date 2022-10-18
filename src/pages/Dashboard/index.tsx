@@ -1,115 +1,105 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { SearchOptions } from '../SearchOptions';
-import { Login } from '../Login';
-import MapView from 'react-native-maps';
-import { Platform, PermissionsAndroid, Dimensions, Modal } from 'react-native';
-import Geocoder from 'react-native-geocoding';
-import * as Location from 'expo-location';
 
-
+import { Map } from '../../components/Map';
 import {
   Container,
   Search,
-  Map,
   Tab,
   UserAccont,
-  Settings,
+  TabSearch,
   SearchIcon,
   VoiceSearchButton,
   VoiceIcon,
   UserAccontButton,
-  SettingsButton,
+  TabSearchButton,
   SearchText,
+  Header,
+  ProfileUserIcon,
+  UserName,
+  AutoMessage,
+ 
+  TextHeaderBox,
+  UserIcon,
 } from './style';
 
 
 
-const { width, height } = Dimensions.get('screen');
 export function Dashboard() {
 
-  const [region, setRegion] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const { status } = await region.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        alert('Permission to access region was denied');
-        return;
-      }
-
-      const region = await region.getCurrentPositionAsync({});
-      setRegion(region);
-    })();
-  }, []);
 
   const navigation = useNavigation();
 
+  const [grettings, setGrettings] = useState('');
+
+  useEffect(() => {
+
+    const CurrentHour = new Date().getHours();
+
+    if (CurrentHour >= 6 && CurrentHour < 12) {
+      setGrettings('Bom Dia');
+    }
+    else if (CurrentHour >= 12 && CurrentHour < 18) {
+      setGrettings('Bom Tarde');
+    }
+
+    else {
+      setGrettings('Boa Noite')
+    }
+
+
+  }, [])
+
+
   return (
     <>
+      <Header>
 
+        <ProfileUserIcon>
+          <UserIcon source={require('../../assets/Leandro.jpeg')} />
+        </ProfileUserIcon>
+
+        <TextHeaderBox>
+          <AutoMessage>{grettings}</AutoMessage>
+          <UserName>Leandro Coelho</UserName>
+        </TextHeaderBox>
+
+            </Header>
       <Container>
 
+        <Map />
 
+        </Container>
+      <Tab>
+        <UserAccontButton>
+          <UserAccont
+            name='person'
+            onPress={() => navigation.navigate('Login')}
+          />
+        </UserAccontButton>
 
-        <SearchIcon name="search" />
-        <Search
+        <VoiceSearchButton>
+          <VoiceIcon name="mic" />
+        </VoiceSearchButton>
 
-          onPress={() => navigation.navigate('SearchOptions')}
-
-        >
-          <SearchText>Pesquise um hospital ou especialidade</SearchText>
-        </Search>
-
-
-        <MapView
-
-          onMapReady={() => {
-            Platform.OS === 'android' ?
-              PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
-              )
-              : ''
-          }}
-          style={{ width: width, height: height }}
-          region={region}
-          zoomEnabled={true}
-          minZoomLevel={15}
-          showsUserLocation={true}
-          loadingEnabled={true}
-        />
-        <Tab>
-          <UserAccontButton>
-            <UserAccont
-              name='person-outline'
-              onPress={() => navigation.navigate('Login')}
-            />
-          </UserAccontButton>
-
-          <VoiceSearchButton>
-            <VoiceIcon name="mic" />
-          </VoiceSearchButton>
-
-          <SettingsButton>
-            <Settings name='settings-outline' />
-          </SettingsButton>
-        </Tab>
-
-      </Container>
-
+        <TabSearchButton
+          onPress={() => navigation.navigate('SearchOptions')}>
+          <TabSearch name='ios-search' />
+        </TabSearchButton>
+      </Tab>
     </>
   );
 }
 
 
-import { NavigationContainer } from '@react-navigation/native';
-
+import { useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { SearchOptions } from '../SearchOptions';
+import { Login } from '../Login';
 
 const Stack = createNativeStackNavigator();
 
-function NavigationLogin() {
+function NavigationTab() {
 
   return (
 
@@ -117,6 +107,7 @@ function NavigationLogin() {
     <Stack.Navigator>
       <Stack.Screen name='SearchOptions' component={SearchOptions} />
       <Stack.Screen name='Login' component={Login} />
+      <Stack.Screen name='Dashboard' component={Dashboard} />
     </Stack.Navigator>
 
   )

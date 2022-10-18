@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
-import {MaterialIcons} from '@expo/vector-icons'
+import {MaterialIcons, Ionicons} from '@expo/vector-icons'
 
 export const Container = styled.View`
   flex: 1;
@@ -10,11 +10,10 @@ export const Container = styled.View`
 
 export const ProjectName = styled.Text`
 font-family: ${(props) => props.theme.Fonts.Bold} ;
-font-size: ${RFValue(40)}px;
+font-size: ${RFValue(35)}px;
 align-self: center;
-margin-top: -30px;
-
-color: ${(props) => props.theme.colors.DarkGreen};
+margin-top: 10px;
+color: ${(props) => props.theme.colors.MidGreen};
 `
 export const Input= styled.TextInput`
 
@@ -40,27 +39,14 @@ border-bottom-color:${(props) => props.theme.colors.DarkGreen} ;
 border-color:  ${(props) => props.theme.colors.BACKGROUND};
 
 `
-export const ButtonStyle = styled.TouchableOpacity`
 
-width: ${RFValue(150)}px;
-height: ${RFPercentage(5)}px;
-border-radius: 20px;
-background-color: ${(props) => props.theme.colors.GreenLight};
-align-self: center;
-align-items: center ;
-margin-top: 10px;
-padding: ${RFValue(5)}px;
-`
-export const TextButtonStyle = styled.Text`
-font-family: ${(props) => props.theme.Fonts.Bold};
-font-size: 18px;
-color: ${(props) => props.theme.colors.BACKGROUND};
 
-`
 export const LinkBox = styled.View`
 
 flex-direction: row;
 align-self: center;
+margin-top: ${RFPercentage(10)}px;
+
 `
 export const TextBeforeLink = styled.Text`
 
@@ -80,15 +66,27 @@ color:${(props) => props.theme.colors.MidGreen} ;
 font-family: ${(props) => props.theme.Fonts.Medium};
 `
 
-export const Contents = styled.View`
-
-margin-top: ${RFValue(25)}px;
-
-
-`
 
 export const Onda = styled.Image`
 flex: 1;
 width: 100%;
-margin-top: ${RFPercentage(5)}px;
+margin-top: ${RFPercentage(10)}px;
+
+`
+export const LogoBox = styled.View`
+flex-direction: row;
+align-items: center;
+justify-content: center;
+margin-top: ${RFValue(120)}px;
+margin-left: ${RFValue(-20)}px;
+
+`
+export const HideButton = styled.TouchableHighlight`
+`
+
+export const HideIcon = styled(Ionicons)`
+margin-top:10px;
+font-size: ${RFValue(22)}px;
+color: ${(props) => props.theme.colors.MidGreen};
+margin-left: -30px;
 `

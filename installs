@@ -21,3 +21,5 @@ npm install @hookform/resolvers yup
 
 npm i cpf-cnpj-validator -S
  
+expo install @react-native-async-storage/async-storage
+

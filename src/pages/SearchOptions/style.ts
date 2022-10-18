@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
-import { MaterialIcons, Feather, Ionicons,FontAwesome5 } from '@expo/vector-icons';
+import { MaterialIcons, Feather, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
 
 export const Container = styled.View`
@@ -9,28 +9,25 @@ export const Container = styled.View`
 `;
 
 export const Search = styled.TextInput`
-  background-color: ${(props) => props.theme.colors.White};
-  margin: ${RFValue(35)}px ${RFValue(20)}px;
-  width:${RFValue(305)}px ;
-  height: ${RFValue(33)}px;
-  border-radius: 20px;
-  padding-Left: 27px;
-   
-  font-size:${RFValue(11)}px;
-  border-color:${(props) => props.theme.colors.ItensInputColor} ;
-  border-width: 1px;
-  font-family: ${(props) => props.theme.Fonts.Medium} ;
-  padding-Top: 3px;
-  
-   
+ background-color: ${(props) => props.theme.colors.White};
+ margin: ${RFValue(40)}px ${RFValue(20)}px;
+ width:${RFValue(305)}px ;
+ height: ${RFValue(33)}px;
+ border-radius: 20px;
+ border-width: 1px;
+ border-color: ${(props) => props.theme.colors.ItensInputColor};
+ flex-direction: row;
+ font-size:${RFValue(11)}px;
+ align-self:center;
+ padding-left: ${RFValue(45)}px;
   `;
 
 export const SearchIcon = styled(MaterialIcons)`
   margin-top:10px;
-  font-size: ${RFValue(19)}px;
+  font-size: ${RFValue(23)}px;
   color: ${(props) => props.theme.colors.ItensInputColor};
   position: absolute;
-  margin: ${RFValue(43)}px ${RFValue(24)}px;
+  margin: ${RFValue(46)}px ${RFValue(68)}px;
   z-index: 1;
 
 `
@@ -67,7 +64,7 @@ export const RecommendedHospitalView = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.colors.GreenLight};
 `
 
-export const HospitalIcon = styled(FontAwesome5 )`
+export const HospitalIcon = styled(FontAwesome5)`
 
   font-size: ${RFValue(19)}px;
   color: ${(props) => props.theme.colors.White};

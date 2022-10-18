@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
-import {MaterialIcons} from '@expo/vector-icons';
+import {MaterialIcons, Ionicons} from '@expo/vector-icons';
 
 export const Container = styled.View`
   flex: 1;
@@ -12,9 +12,9 @@ export const ProjectName = styled.Text`
 font-family: ${(props) => props.theme.Fonts.Bold} ;
 font-size: ${RFValue(35)}px;
 align-self: center;
-margin-top: -35px;
+margin-top: 10px;
 
-color: ${(props) => props.theme.colors.DarkGreen};
+color: ${(props) => props.theme.colors.MidGreen};
 `
 export const Input= styled.TextInput`
 
@@ -64,7 +64,7 @@ color: ${(props) => props.theme.colors.BACKGROUND};
 
 `
 export const LinkBox = styled.View`
-
+margin-top: ${RFValue(70)}px;
 flex-direction: row;
 align-self: center;
 `
@@ -90,4 +90,22 @@ flex: 1;
 width: 100%;
 
 
+`
+export const LogoBox = styled.View`
+
+flex-direction: row;
+align-items: center;
+justify-content: center;
+margin-top: ${RFValue(70)}px;
+margin-left: ${RFValue(-20)}px;
+
+`
+export const HideButton = styled.TouchableHighlight`
+`
+
+export const HideIcon = styled(Ionicons)`
+margin-top:10px;
+font-size: ${RFValue(22)}px;
+color: ${(props) => props.theme.colors.MidGreen};
+margin-left: -30px;
 `

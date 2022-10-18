@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Routes } from './src/routes';
 import AppLoading from 'expo-app-loading';
 import { useFonts, Poppins_300Light, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins';
+
 //--------------------------------------------------
 
 import Theme from './src/pages/global/styles/Theme';
@@ -34,7 +35,7 @@ export default function App() {
       <NavigationContainer >
         <Routes/>
       </NavigationContainer>
-    </ThemeProvider>
+     </ThemeProvider>
  
   );
 }

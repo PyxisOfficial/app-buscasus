@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
-
+import { RFValue } from 'react-native-responsive-fontsize';
 
 
 
@@ -16,14 +16,14 @@ const styles = StyleSheet.create({
 
 container:{
    
-    padding: 20,
+
 },
 
 Logo:{
 
-   height: 240,
-   width: 240,
-   alignSelf:'center',
+   height: 150,
+   width: 150,
+
    }
 
 
