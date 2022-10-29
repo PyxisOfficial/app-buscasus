@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Doctors  } from '../modals/Doctors';
+import { Duty } from '../modals/Duty';
+
+import { Modal } from 'react-native';
 
 import {
   Container,
@@ -21,13 +25,36 @@ import {
   Footer,
   Filds, 
   Services,
- Duty,
-  Doctors,
+ DutyButton,
+  DoctorsButton,
+  TitleButton,
 
 } from './styles';
 import { Button } from '../../components/Button';
 
 export function HospitalPage({ route }) {
+
+const [dutyOpen, setDutyOpen] = useState(false)
+
+  function HandleOpenDutyPage(){
+    setDutyOpen(true)
+  }
+
+  function HandleCloseDutyPage(){
+    setDutyOpen(false)
+  }
+
+  
+  const [doctorsOpen, setDoctorsOpen] = useState(false)
+
+  function HandleOpenDoctorsPage(){
+    setDoctorsOpen(true)
+  }
+
+  function HandleCloseDoctorsPage(){
+    setDoctorsOpen(false)
+  }
+  
 
   const navigation = useNavigation();
 
@@ -89,8 +116,13 @@ export function HospitalPage({ route }) {
 
       <Services>
 
-        <Duty/>
-        <Doctors/>
+        <DutyButton onPress={HandleOpenDutyPage}>
+          <TitleButton>Ver Plantões</TitleButton>
+          </DutyButton>
+
+        <DoctorsButton onPress={HandleOpenDoctorsPage}>
+          <TitleButton>Ver Médicos</TitleButton>
+          </DoctorsButton>
 
       </Services>
 
@@ -99,6 +131,14 @@ export function HospitalPage({ route }) {
       </Footer>
       
       </Filds>
+
+      <Modal visible={doctorsOpen}>
+        <Doctors closeModal={HandleCloseDoctorsPage}/>
+      </Modal>
+
+      <Modal visible={dutyOpen}>
+        <Duty closeModal={HandleCloseDutyPage}/>
+      </Modal>
     </Container>
   );
 }

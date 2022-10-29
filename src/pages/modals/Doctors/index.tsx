@@ -14,13 +14,18 @@ import {
     Info,
     Name,
     Specialty,
+    Filds,
+    Footer
 } from './styles';
+import { Button } from '../../../components/Button';
+
+interface props  {
+    closeModal: () => void
+}
+
+export function Doctors({closeModal}: props) {
 
 
-
-export function Doctors() {
-
-    const navigation = useNavigation();
 
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -44,6 +49,7 @@ export function Doctors() {
 
     return (
         <Container>
+            <Filds>
             <Header>
                 <Title>Médicos</Title>
             </Header>
@@ -70,6 +76,11 @@ export function Doctors() {
             )}
           />
         )}
+        </Filds>
+
+        <Footer>
+        <Button Title='Voltar' onPress={closeModal}/>
+        </Footer>
         </Container>
 
    

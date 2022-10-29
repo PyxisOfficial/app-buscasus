@@ -18,19 +18,19 @@ export const Title  = styled.Text`
 export const Header = styled.View`
     align-items: center;
     justify-content: center; 
-    margin-top:${RFValue(80)}px;
+    margin-top:${RFValue(60)}px;
     padding-bottom:${RFValue(30)}px;
     
 
 
 `
    export const DoctorsList = styled.FlatList`
- 
+    flex:1;
    `
    export const DoctorInfo = styled.View`
    margin: ${RFValue(14)}px ${RFValue(24)}px;
    flex-direction: row;
-   background-color: ${(props) => props.theme.colors.DarkGreen};
+   background-color: ${(props) => props.theme.colors.MidGreen};
    padding:${RFValue(5)}px ${RFValue(80)}px;
    border-radius: 100px;
    height:${(RFValue(55))}px;
@@ -65,7 +65,17 @@ export const Header = styled.View`
   color: ${(props) => props.theme.colors.White};
    `
    export const Specialty = styled.Text`
+      margin-top: -5px;
     font-family: ${(props) => props.theme.Fonts.Regular} ;
   font-size: ${RFValue(12)}px;
   color: ${(props) => props.theme.colors.White};
    `
+   export const Filds = styled.View`
+   flex: 0.9;
+   
+ `
+  export const Footer = styled.View`
+  flex:.1;
+  padding: 30px;
+ 
+ `

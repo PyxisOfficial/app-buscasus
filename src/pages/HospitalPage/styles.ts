@@ -100,7 +100,8 @@ font-family: ${(props) => props.theme.Fonts.Regular} ;
  `
  export const Footer = styled.View`
  width: 100%;
-
+ padding: 30px;
+ 
 
 `
 export const Filds = styled.View`
@@ -109,17 +110,49 @@ export const Filds = styled.View`
 `
 
  export const Services = styled.View`
+ 
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ justify-content: space-around;
+ 
  `
- export const Duty = styled.TouchableOpacity.attrs({
+ export const DutyButton = styled.TouchableOpacity.attrs({
 
   activeOpacity: .7
  })`
  
+ width: ${RFValue(150)}px;
+height: ${RFPercentage(5)}px;
+border-radius: 20px;
+border-width:1px;
+border-color: ${(props) => props.theme.colors.MidGreen};
+align-self: center;
+align-items: center ;
+margin-top: ${RFValue(20)}px;
+padding: ${RFValue(5)}px;
+justify-content: center;
+
  `
- export const Doctors = styled.TouchableOpacity.attrs({
+ export const DoctorsButton = styled.TouchableOpacity.attrs({
 
   activeOpacity: .7
  })`
  
- 
+ width: ${RFValue(150)}px;
+height: ${RFPercentage(5)}px;
+border-radius: 20px;
+border-width:1px;
+border-color: ${(props) => props.theme.colors.MidGreen};
+align-self: center;
+align-items: center ;
+margin-top: ${RFValue(20)}px;
+padding: ${RFValue(5)}px;
+justify-content: center;
  `
+
+export const TitleButton = styled.Text`
+font-size: ${RFValue(13)}px;
+color: ${(props) => props.theme.colors.MidGreen};
+font-family: ${(props) => props.theme.Fonts.Medium} ;
+`
