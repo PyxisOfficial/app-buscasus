@@ -17,7 +17,7 @@ export default {
         ItensInputColor:'#D9D9D9',
 
         DarkWhite: '#E7E7E7',
-        MidWhite: '#E6E6E6',
+        MidWhite: '#E1E1E1',
         White: '#FBFBFD',
 
         Attention: '#FA0F3A'
