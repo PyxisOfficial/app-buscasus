@@ -36,7 +36,6 @@ export function Duty({closeModal}: props) {
     const getPlantao = async () => {
         try {
             const response = await fetch('http://192.168.15.45/buscaSusWeb2-main/buscaSusWeb2-main//assets/json/json-plantao.php');
-
             const json = await response.json();
             setData(json.plantoes);
         } catch (error) {
@@ -77,7 +76,7 @@ export function Duty({closeModal}: props) {
                                 <Info>
 
                                     <Start>Início: {item.inicioPlantao}</Start>
-                                    <End>Término:{item.fimPlantao}</End>
+                                    <End>Término: {item.fimPlantao}</End>
 
                                 </Info>
 

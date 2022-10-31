@@ -34,6 +34,7 @@ export function Doctors({closeModal}: props) {
         try {
             const response = await fetch('http://192.168.15.45/buscaSusWeb2-main/buscaSusWeb2-main//assets/json/json-medico.php');
 
+
             const json = await response.json();
             setData(json.medicos);
         } catch (error) {

@@ -8,6 +8,7 @@ import { Modal } from 'react-native';
 
 import {
   Container,
+  Actions,
   Title,
   Return,
   Header,
@@ -28,13 +29,23 @@ import {
  DutyButton,
   DoctorsButton,
   TitleButton,
-
+  Favorite,
+  FavIcon,
 } from './styles';
 import { Button } from '../../components/Button';
 
 export function HospitalPage({ route }) {
 
-const [dutyOpen, setDutyOpen] = useState(false)
+ const [isActive, setIsActive]   =  useState(false);
+
+
+
+ function handleFavActive(type : true | false){
+  setIsActive(type)
+
+ }
+
+const [dutyOpen, setDutyOpen] = useState(false);
 
   function HandleOpenDutyPage(){
     setDutyOpen(true)
@@ -61,9 +72,23 @@ const [dutyOpen, setDutyOpen] = useState(false)
   return (
     <Container>
 
-      <Return onPress={() => navigation.goBack()}>
+      <Actions>
+
+      <Return
+     
+      onPress={() => navigation.goBack()}>
         <IconReturn name='arrowleft' />
       </Return>
+
+      <Favorite 
+     
+      onPress={() => handleFavActive(true)}>
+          <FavIcon 
+          isActive={isActive}
+          name='heart'/>
+        </Favorite>
+
+      </Actions>
 
       <Header>
         <Title>{route.params?.name}</Title>
@@ -124,10 +149,11 @@ const [dutyOpen, setDutyOpen] = useState(false)
           <TitleButton>Ver Médicos</TitleButton>
           </DoctorsButton>
 
+     
       </Services>
 
       <Footer>
-        <Button Title='Definir rota' />
+        <Button Title='Definir rota' onPress={() => navigation.navigate('Dashboard')}/>
       </Footer>
       
       </Filds>
@@ -141,4 +167,22 @@ const [dutyOpen, setDutyOpen] = useState(false)
       </Modal>
     </Container>
   );
+}
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Dashboard } from '../Dashboard';
+
+
+const Stack = createNativeStackNavigator();
+
+function NavigationTab() {
+
+  return (
+
+
+    <Stack.Navigator>
+       <Stack.Screen name='Dashboard' component={Dashboard} />
+    </Stack.Navigator>
+
+  )
 }

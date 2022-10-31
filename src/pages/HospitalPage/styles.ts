@@ -1,6 +1,10 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 import { AntDesign, MaterialIcons, Feather, Ionicons, Octicons, } from '@expo/vector-icons';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+
+interface favProps{
+  isActive: boolean
+}
 
 export const Container = styled.View`
   flex: 1;
@@ -17,10 +21,30 @@ font-family: ${(props) => props.theme.Fonts.Medium} ;
 export const IconReturn = styled(AntDesign)`
 
 font-size: ${RFValue(23)}px;
-margin:${RFValue(40)}px ${RFValue(20)}px ${RFValue(10)}px ${RFValue(20)}px;
+
+`
+export const Favorite = styled.TouchableOpacity.attrs({
+
+  activeOpacity: .7
+ })`
+
+
+
+`
+export const FavIcon = styled(AntDesign)<favProps>`
+
+font-size: ${RFValue(25)}px;
+color: ${({theme, isActive}) => isActive ? theme.colors.Attention : theme.colors.DarkGray};
 
 `
 
+export const Actions = styled.View`
+
+flex-direction: row ;
+justify-content: space-between;
+margin:${RFValue(40)}px ${RFValue(20)}px ${RFValue(10)}px ${RFValue(20)}px;
+
+`
 export const Header = styled.View`
 
 flex-direction: row;
@@ -35,19 +59,19 @@ export const Return = styled.TouchableOpacity`
 export const Search =styled.TextInput`
 align-self: center;
 background-color: ${(props) => props.theme.colors.White};
- width:${RFPercentage(50)}px ;
+width:90%;
  border-radius: 20px;
  border-width: 1px;
  border-color: ${(props) => props.theme.colors.ItensInputColor};
  flex-direction: row;
- font-size:${RFValue(11)}px;
- padding-left:${RFValue(40)}px ;
+ font-size:${RFValue(10)}px;
+ padding-left:${RFValue(20)}px ;
 
 `
 
 export  const HospitalPicture = styled.View`
-height: ${RFValue(200)}px;
-width:${RFValue(340)}px;  
+height: ${RFValue(180)}px;
+width:${RFValue(300)}px;  
 background-color: ${(props) => props.theme.colors.ItensInputColor};
 margin-right:25px;
 
@@ -114,7 +138,8 @@ export const Filds = styled.View`
  flex-direction: row;
  align-items: center;
  justify-content: center;
- justify-content: space-around;
+ justify-content: space-between;
+ padding:${RFValue(20)}px   ${RFValue(15)}px;
  
  `
  export const DutyButton = styled.TouchableOpacity.attrs({
@@ -156,3 +181,4 @@ font-size: ${RFValue(13)}px;
 color: ${(props) => props.theme.colors.MidGreen};
 font-family: ${(props) => props.theme.Fonts.Medium} ;
 `
+

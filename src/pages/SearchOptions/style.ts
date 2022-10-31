@@ -31,7 +31,7 @@ export const FilterIcon = styled(Ionicons)`
 
 export const Input= styled.TextInput`
  background-color: ${(props) => props.theme.colors.White};
- width:${RFPercentage(45)}px ;
+ width: 90%; ;
  border-radius: 20px;
  border-width: 1px;
  border-color: ${(props) => props.theme.colors.ItensInputColor};
@@ -80,7 +80,7 @@ export const RecommendedHospitalView = styled.TouchableOpacity.attrs({
 })`
   flex-direction:row;
   margin-top: 10px;
-  width:${RFPercentage(48)}px ;
+  width:100%;
   height: ${RFValue(33)}px;
   align-items: center;
    border-radius: 10px;
@@ -97,7 +97,7 @@ export const HospitalIcon = styled(FontAwesome5)`
 export const HospitalName = styled.Text`
 
 font-family: ${(props) => props.theme.Fonts.Medium} ;
-font-size: ${RFValue(11)}px;
+font-size: ${RFValue(10)}px;
 color: ${(props) => props.theme.colors.MidGray};
 padding-left: ${RFValue(14)}px;
 margin-Bottom:-5px;

@@ -54,7 +54,9 @@ export function Dashboard() {
     <>
       <Header>
 
-        <ProfileUserIcon>
+        <ProfileUserIcon
+        onPress={() => navigation.navigate('Profile')}
+        >
           <UserIcon source={require('../../assets/Leandro.jpeg')} />
         </ProfileUserIcon>
 
@@ -96,6 +98,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { SearchOptions } from '../SearchOptions';
 import { Login } from '../Login';
+import { Profile } from '../Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -107,7 +110,7 @@ function NavigationTab() {
     <Stack.Navigator>
       <Stack.Screen name='SearchOptions' component={SearchOptions} />
       <Stack.Screen name='Login' component={Login} />
-      <Stack.Screen name='Dashboard' component={Dashboard} />
+      <Stack.Screen name='Profile' component={Profile} />
     </Stack.Navigator>
 
   )

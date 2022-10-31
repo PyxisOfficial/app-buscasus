@@ -31,7 +31,7 @@ export const Header = styled.View`
    margin: ${RFValue(14)}px ${RFValue(24)}px;
    flex-direction: row;
    background-color: ${(props) => props.theme.colors.MidGreen};
-   padding:${RFValue(5)}px ${RFValue(80)}px;
+   padding:${RFValue(5)}px ${RFValue(0)}px ${RFValue(5)}px  ${RFValue(80)}px;
    border-radius: 100px;
    height:${(RFValue(55))}px;
    `
