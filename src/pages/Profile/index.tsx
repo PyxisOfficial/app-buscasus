@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
+import { ProfileContent } from '../../components/ProfileContent';
 
 import {
   Container,
@@ -45,7 +46,7 @@ export function Profile() {
   }, [])
   return (
     <>
-    
+
       <Container>
 
         <Header>
@@ -66,6 +67,28 @@ export function Profile() {
 
         </Header>
 
+        <ProfileContent
+
+          icon='heart'
+          title='Favoritos'
+          onPress={() => navigation.navigate('Favoritos')}
+        />
+
+        <ProfileContent
+
+          icon='clock'
+          title='Recentes'
+          onPress={() => navigation.navigate('Recentes')}
+        />
+
+        <ProfileContent
+
+          icon='settings'
+          title='Configurações'
+          onPress={() => navigation.navigate('Configuracoes')}
+        />
+
+
       </Container>
       <Tab>
         <UserAccontButton>
@@ -76,14 +99,16 @@ export function Profile() {
         </UserAccontButton>
 
         <VoiceSearchButton
-        onPress={() => navigation.navigate('Dashboard')}
+          onPress={() => navigation.navigate('Dashboard')}
         >
-        <VoiceIcon name="home" />
+          <VoiceIcon name="home" />
         </VoiceSearchButton>
 
 
-          <SettingsButton>
-          <Settings name='gear' />
+        <SettingsButton>
+          <Settings name='search'
+            onPress={() => navigation.navigate('SearchOptions')}
+          />
         </SettingsButton>
       </Tab>
     </>
@@ -95,6 +120,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Dashboard } from '../Dashboard';
 import { SearchOptions } from '../SearchOptions';
 import { Login } from '../Login';
+import { Recentes } from '../profileScreens/Recentes';
+import { Configuracoes } from '../profileScreens/Settings';
+import { Favoritos } from '../profileScreens/Favoritos';
 
 const Stack = createNativeStackNavigator();
 
@@ -107,6 +135,10 @@ function NavigationTab() {
       <Stack.Screen name='SearchOptions' component={SearchOptions} />
       <Stack.Screen name='Login' component={Login} />
       <Stack.Screen name='Dashboard' component={Dashboard} />
+      <Stack.Screen name='Recentes' component={Recentes} />
+      <Stack.Screen name='Configuracoes' component={Configuracoes} />
+      <Stack.Screen name='Favoritos' component={Favoritos} />
+
     </Stack.Navigator>
 
   )

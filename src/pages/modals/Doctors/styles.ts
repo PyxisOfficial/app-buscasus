@@ -5,6 +5,7 @@ import { Octicons } from '@expo/vector-icons';
 export const Container = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.colors.BACKGROUND};
+height: 100%;
 `;
 
 export const Title  = styled.Text`

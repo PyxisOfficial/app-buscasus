@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components/native';
-import { AntDesign, MaterialIcons, Feather, Ionicons, Octicons, } from '@expo/vector-icons';
+import { AntDesign, MaterialIcons, Feather, Ionicons, Octicons,EvilIcons  } from '@expo/vector-icons';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 
 interface favProps{
@@ -17,24 +17,30 @@ font-size: ${RFValue(15)}px;
 color: ${(props) => props.theme.colors.DarkGray};
 font-family: ${(props) => props.theme.Fonts.Medium} ;
 `
+export const Return = styled.TouchableOpacity`
+`
 
-export const IconReturn = styled(AntDesign)`
+export const IconReturn = styled(AntDesign )`
 
-font-size: ${RFValue(23)}px;
+font-size: ${RFValue(25)}px;
 
 `
-export const Favorite = styled.TouchableOpacity.attrs({
-
-  activeOpacity: .7
- })`
+export const Favorite = styled.TouchableOpacity<favProps>`
 
 
+border-radius: 100px;
+width:  ${RFValue(30)}px;
+height:${RFValue(30)}px;
+align-items:center;
+justify-content: center;
+ 
+background-color: ${({theme, isActive}) =>  isActive ? theme.colors.Attention : theme.colors.White };
 
 `
 export const FavIcon = styled(AntDesign)<favProps>`
 
-font-size: ${RFValue(25)}px;
-color: ${({theme, isActive}) => isActive ? theme.colors.Attention : theme.colors.DarkGray};
+font-size: ${RFValue(20)}px;
+color: ${({theme, isActive}) => isActive ? theme.colors.White : theme.colors.DarkGray};
 
 `
 
@@ -53,8 +59,6 @@ justify-content: center;
 margin-bottom:${RFValue(10)}px ;
 `
 
-export const Return = styled.TouchableOpacity`
-`
 
 export const Search =styled.TextInput`
 align-self: center;

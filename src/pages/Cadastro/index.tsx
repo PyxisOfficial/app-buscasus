@@ -83,7 +83,6 @@ export function Cadastro() {
     /* async function remove() {
      await AsyncStorage.removeItem(UserData)
    }
-
    remove();*/
   }, [])
 
@@ -105,14 +104,14 @@ export function Cadastro() {
       const data = await AsyncStorage.getItem(UserData);
       const currentData = data ? JSON.parse(data) : [];
 
-      const dataFormatted = [
+      const dataFormatted = {
 
         ...currentData,
         SingUpForm
 
-      ];
+      };
 
-
+ 
 
 
       await AsyncStorage.setItem(UserData, JSON.stringify(dataFormatted));
@@ -121,17 +120,23 @@ export function Cadastro() {
       Alert.alert('Não foi possível cadastrar')
     }
 
+    if(form.ConfPassword == form.Password && cpf.isValid(form.CPF) &&  form.name != '' && form.email != '' && form.Password != ''){
+      return navigation.navigate('Login')
+    }
+    
     if (form.ConfPassword != form.Password) {
       return alert('Senhas diferentes, tente novamente.')
     }
 
     if (cpf.isValid(form.CPF)) {
-      return (console.log(SingUpForm))
+      return ((console.log(SingUpForm)) )
     }
     else {
       return (alert('informe um CPF válido'))
     }
 
+    
+   
   }
 
   const [hidePassword, setHidePassword] = useState(true)

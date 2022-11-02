@@ -1,23 +1,20 @@
 import React, { useState, useEffect } from 'react';
-
+import { useNavigation } from '@react-navigation/native';
 import { Map } from '../../components/Map';
+
 import {
   Container,
-  Search,
   Tab,
   UserAccont,
   TabSearch,
-  SearchIcon,
   VoiceSearchButton,
   VoiceIcon,
   UserAccontButton,
   TabSearchButton,
-  SearchText,
   Header,
   ProfileUserIcon,
   UserName,
   AutoMessage,
- 
   TextHeaderBox,
   UserIcon,
 } from './style';
@@ -93,26 +90,4 @@ export function Dashboard() {
 }
 
 
-import { useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import { SearchOptions } from '../SearchOptions';
-import { Login } from '../Login';
-import { Profile } from '../Profile';
-
-const Stack = createNativeStackNavigator();
-
-function NavigationTab() {
-
-  return (
-
-
-    <Stack.Navigator>
-      <Stack.Screen name='SearchOptions' component={SearchOptions} />
-      <Stack.Screen name='Login' component={Login} />
-      <Stack.Screen name='Profile' component={Profile} />
-    </Stack.Navigator>
-
-  )
-}
 

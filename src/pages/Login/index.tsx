@@ -151,25 +151,3 @@ const [hidePassword, setHidePassword] = useState(true)
 </TouchableWithoutFeedback>
   );
 }
-import { NavigationContainer } from '@react-navigation/native';
-
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Profile } from '../Profile';
-
-
-const Stack = createNativeStackNavigator();
-
-function NavigationLogin() {
-
-  return (
-
-
-    <Stack.Navigator>
-      <Stack.Screen name='Login' component={Login} />
-      <Stack.Screen name='Cadastro' component={Cadastro} />
-      <Stack.Screen name='Dashboard' component={Dashboard} />
-      <Stack.Screen name='Profile' component={Profile} />
-    </Stack.Navigator>
-
-  )
-}

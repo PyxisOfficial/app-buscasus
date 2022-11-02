@@ -38,7 +38,7 @@ export function HospitalPage({ route }) {
 
  const [isActive, setIsActive]   =  useState(false);
 
-
+  
 
  function handleFavActive(type : true | false){
   setIsActive(type)
@@ -81,11 +81,11 @@ const [dutyOpen, setDutyOpen] = useState(false);
       </Return>
 
       <Favorite 
-     
+     isActive={isActive}
       onPress={() => handleFavActive(true)}>
           <FavIcon 
           isActive={isActive}
-          name='heart'/>
+          name='hearto'/>
         </Favorite>
 
       </Actions>
@@ -169,20 +169,3 @@ const [dutyOpen, setDutyOpen] = useState(false);
   );
 }
 
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Dashboard } from '../Dashboard';
-
-
-const Stack = createNativeStackNavigator();
-
-function NavigationTab() {
-
-  return (
-
-
-    <Stack.Navigator>
-       <Stack.Screen name='Dashboard' component={Dashboard} />
-    </Stack.Navigator>
-
-  )
-}
