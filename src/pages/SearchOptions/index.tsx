@@ -114,8 +114,8 @@ export function SearchOptions() {
       <Tab>
         <UserAccontButton>
           <UserAccont
-            name='person'
-            onPress={() => navigation.navigate('Login')}
+            name='gear'
+
           />
         </UserAccontButton>
 

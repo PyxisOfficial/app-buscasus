@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Doctors  } from '../modals/Doctors';
+import { Doctors } from '../modals/Doctors';
 import { Duty } from '../modals/Duty';
 
 import { Modal } from 'react-native';
@@ -24,9 +24,9 @@ import {
   Secundary,
   Content,
   Footer,
-  Filds, 
+  Filds,
   Services,
- DutyButton,
+  DutyButton,
   DoctorsButton,
   TitleButton,
   Favorite,
@@ -36,73 +36,73 @@ import { Button } from '../../components/Button';
 
 export function HospitalPage({ route }) {
 
- const [isActive, setIsActive]   =  useState(false);
+  const [isActive, setIsActive] = useState(false);
 
-  
 
- function handleFavActive(type : true | false){
-  setIsActive(type)
 
- }
+  function handleFavActive(type: true | false) {
+    setIsActive(type)
 
-const [dutyOpen, setDutyOpen] = useState(false);
+  }
 
-  function HandleOpenDutyPage(){
+  const [dutyOpen, setDutyOpen] = useState(false);
+
+  function HandleOpenDutyPage() {
     setDutyOpen(true)
   }
 
-  function HandleCloseDutyPage(){
+  function HandleCloseDutyPage() {
     setDutyOpen(false)
   }
 
-  
+
   const [doctorsOpen, setDoctorsOpen] = useState(false)
 
-  function HandleOpenDoctorsPage(){
+  function HandleOpenDoctorsPage() {
     setDoctorsOpen(true)
   }
 
-  function HandleCloseDoctorsPage(){
+  function HandleCloseDoctorsPage() {
     setDoctorsOpen(false)
   }
-  
+
 
   const navigation = useNavigation();
 
   return (
     <Container>
 
-      <Actions>
+      <Header>
 
-      <Return
-     
-      onPress={() => navigation.goBack()}>
-        <IconReturn name='arrowleft' />
-      </Return>
+        <Return
 
-      <Favorite 
-     isActive={isActive}
-      onPress={() => handleFavActive(true)}>
-          <FavIcon 
+          onPress={() => navigation.goBack()}>
+          <IconReturn name='arrowleft' />
+        </Return>
+
+        <Title
+        maxLenght={30}>{route.params?.name}</Title>
+
+        <Favorite
           isActive={isActive}
-          name='hearto'/>
+          onPress={() => handleFavActive(true)}>
+          <FavIcon
+            isActive={isActive}
+            name='hearto' />
         </Favorite>
 
-      </Actions>
 
-      <Header>
-        <Title>{route.params?.name}</Title>
+
+
       </Header>
 
       <Search placeholder='Pesquise um plantão ou especialidade médica aqui' />
 
-      <HospitalPhoto horizontal={true} showsHorizontalScrollIndicator={false} >
         <HospitalPicture></HospitalPicture>
-        <HospitalPicture></HospitalPicture>
-        <HospitalPicture></HospitalPicture>
-      </HospitalPhoto>
+        
+  
 
-    
+
       <HospitalInfo>
 
         <HeaderInfo>
@@ -137,33 +137,33 @@ const [dutyOpen, setDutyOpen] = useState(false);
         </Content>
 
       </HospitalInfo>
-    <Filds>
+      <Filds>
 
-      <Services>
+        <Services>
 
-        <DutyButton onPress={HandleOpenDutyPage}>
-          <TitleButton>Ver Plantões</TitleButton>
+          <DutyButton onPress={HandleOpenDutyPage}>
+            <TitleButton>Ver Plantões</TitleButton>
           </DutyButton>
 
-        <DoctorsButton onPress={HandleOpenDoctorsPage}>
-          <TitleButton>Ver Médicos</TitleButton>
+          <DoctorsButton onPress={HandleOpenDoctorsPage}>
+            <TitleButton>Ver Médicos</TitleButton>
           </DoctorsButton>
 
-     
-      </Services>
 
-      <Footer>
-        <Button Title='Definir rota' onPress={() => navigation.navigate('Dashboard')}/>
-      </Footer>
-      
+        </Services>
+
+        <Footer>
+          <Button Title='Definir rota' onPress={() => navigation.navigate('Dashboard')} />
+        </Footer>
+
       </Filds>
 
       <Modal visible={doctorsOpen}>
-        <Doctors closeModal={HandleCloseDoctorsPage}/>
+        <Doctors closeModal={HandleCloseDoctorsPage} />
       </Modal>
 
       <Modal visible={dutyOpen}>
-        <Duty closeModal={HandleCloseDutyPage}/>
+        <Duty closeModal={HandleCloseDutyPage} />
       </Modal>
     </Container>
   );

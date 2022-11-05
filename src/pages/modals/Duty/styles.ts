@@ -60,7 +60,7 @@ export const Header = styled.View`
       padding:${RFValue(12)}px  ${RFValue(15)}px ;
       border-radius: 100px;
       height:${(RFValue(65))}px;
-      width:${(RFValue(175))}px;
+      width:${(RFValue(190))}px;
       position: absolute;
       margin: ${(RFValue(-5))}px ${(RFValue(0))}px ${(RFValue(0))}px ${(RFValue(165))}px;
       `

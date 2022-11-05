@@ -51,15 +51,11 @@ export function Dashboard() {
     <>
       <Header>
 
-        <ProfileUserIcon
-        onPress={() => navigation.navigate('Profile')}
-        >
-          <UserIcon source={require('../../assets/Leandro.jpeg')} />
-        </ProfileUserIcon>
+   
 
         <TextHeaderBox>
           <AutoMessage>{grettings}</AutoMessage>
-          <UserName>Leandro Coelho</UserName>
+          <UserName>Usuário</UserName>
         </TextHeaderBox>
 
             </Header>
@@ -71,8 +67,7 @@ export function Dashboard() {
       <Tab>
         <UserAccontButton>
           <UserAccont
-            name='person'
-            onPress={() => navigation.navigate('Login')}
+            name='gear'
           />
         </UserAccontButton>
 

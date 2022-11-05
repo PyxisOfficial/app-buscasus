@@ -13,7 +13,7 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-font-size: ${RFValue(15)}px;
+font-size: ${RFValue(14)}px;
 color: ${(props) => props.theme.colors.DarkGray};
 font-family: ${(props) => props.theme.Fonts.Medium} ;
 `
@@ -53,10 +53,12 @@ margin:${RFValue(40)}px ${RFValue(20)}px ${RFValue(10)}px ${RFValue(20)}px;
 `
 export const Header = styled.View`
 
-flex-direction: row;
+
 align-items: center;
 justify-content: center; 
-margin-bottom:${RFValue(10)}px ;
+flex-direction: row ;
+justify-content: space-between;
+margin:${RFValue(70)}px ${RFValue(20)}px ${RFValue(10)}px ${RFValue(20)}px;
 `
 
 
@@ -75,16 +77,13 @@ width:90%;
 
 export  const HospitalPicture = styled.View`
 height: ${RFValue(180)}px;
-width:${RFValue(300)}px;  
+width:${RFPercentage(50)}px;  
 background-color: ${(props) => props.theme.colors.ItensInputColor};
-margin-right:25px;
+margin:${RFValue(24)}px;
+align-self: center;
 
 `
 
-export const HospitalPhoto  = styled.ScrollView`
-padding: ${RFValue(20)}px;
-flex-Grow:0;
-`
 
  export const HospitalInfo = styled.View`
  
@@ -143,7 +142,7 @@ export const Filds = styled.View`
  align-items: center;
  justify-content: center;
  justify-content: space-between;
- padding:${RFValue(20)}px   ${RFValue(15)}px;
+ padding:${RFValue(20)}px   ${RFValue(35)}px;
  
  `
  export const DutyButton = styled.TouchableOpacity.attrs({
