@@ -36,15 +36,15 @@ export const Header = styled.View`
    border-radius: 100px;
    height:${(RFValue(55))}px;
    `
-   export const DoctorPhoto = styled.View`
+   export const DoctorPhoto = styled.Image`
 
-    background-color: ${(props) => props.theme.colors.ItensInputColor};
+
     height:${(RFValue(70))}px;
     width: ${(RFValue(70))}px;
 
     border-radius: 100px;
     border-width: 3.5px;
-    border-color: ${(props) => props.theme.colors.BACKGROUND};
+    border-color: ${(props) => props.theme.colors.MidGreen};
 
     z-index: 1;
     position: absolute;
@@ -52,11 +52,7 @@ export const Header = styled.View`
     margin-left:-5px;
 
    `
-   export const DoctorIcon = styled(Octicons)`
-   margin:${(RFValue(10))}px ${(RFValue(18))}px;
-   font-size: ${RFValue(35)}px;
-   color: ${(props) => props.theme.colors.White};
-   `
+
    export const Info = styled.View`
    
    `

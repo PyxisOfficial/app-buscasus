@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
-
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
 import {
@@ -18,36 +18,61 @@ import {
     Footer
 } from './styles';
 import { Button } from '../../../components/Button';
+import { string } from 'yup';
+
 
 interface props  {
-    closeModal: () => void
+  closeModal: () => void
 }
 
-export function Doctors({closeModal}: props) {
+interface FotoProps{
+  fotoMedico: string
+}
 
+export function Doctors({route}, {closeModal}: props) {
 
+  const {
+    urlDoctor,
+    name,
+    endereço,
+    cep,
+    city,
+    bairro,
+    uf,
+    abertura,
+    fechamento,
+    telefone,}  =  route.params;
 
-    const [isLoading, setLoading] = useState(true);
+    const navigation = useNavigation();
     const [data, setData] = useState([]);
 
-    const getMedico = async () => {
-        try {
-            const response = await fetch('http://192.168.15.45/buscaSusWeb2-main/buscaSusWeb2-main//assets/json/json-medico.php');
-
-
-            const json = await response.json();
-            setData(json.medicos);
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-        }
-    }
-
     useEffect(() => {
-        getMedico();
-    }, []);
+        axios.get(urlDoctor).then((response)=> { setData(response.data);})
+        }, []);
 
+ function loadDoctorPhoto(){
+    
+
+    const img = data;
+    
+    const doctorsPhotos = img.map((item)  => {
+      const foto = string(item.fotoMedico);
+    
+
+  return {
+    foto
+    }
+    
+  })
+  
+  }
+   const [imgDoctor, setImgDoctor] = useState('')
+   useEffect(() => {
+
+      const dataImg = 'http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-hospital/img/'
+      setImgDoctor(dataImg)
+  
+    }, [])
     return (
         <Container>
             <Filds>
@@ -55,7 +80,7 @@ export function Doctors({closeModal}: props) {
                 <Title>Médicos</Title>
             </Header>
 
-            {isLoading ? <ActivityIndicator /> : (
+          
           <DoctorsList
             data={data}
             keyExtractor={({ idMedico }, index) => idMedico}
@@ -63,9 +88,7 @@ export function Doctors({closeModal}: props) {
 
               <DoctorInfo>
 
-                <DoctorPhoto>
-                    <DoctorIcon name='person'/> 
-                </DoctorPhoto>
+                <DoctorPhoto source={{uri: imgDoctor + item.fotoMedico}}/>
 
                 <Info>
 
@@ -76,11 +99,23 @@ export function Doctors({closeModal}: props) {
               </DoctorInfo>
             )}
           />
-        )}
+       
         </Filds>
 
         <Footer>
-        <Button Title='Voltar' onPress={closeModal}/>
+        <Button Title='Voltar' onPress={() => navigation.navigate('HospitalPage', {
+          doctorJson: '',
+          idDoctor: '',
+          name: name,
+          endereço: endereço,
+          cep: cep,
+          city: city,
+          bairro: bairro,
+          uf: uf,
+          abertura: abertura,
+          fechamento: fechamento,
+          telefone: telefone,
+        })}/>
         </Footer>
         </Container>
 

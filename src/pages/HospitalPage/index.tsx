@@ -38,34 +38,53 @@ export function HospitalPage({ route }) {
 
   const [isActive, setIsActive] = useState(false);
 
+  const {
+    doctorJson,
+    idDoctor,
+    name,
+    endereço,
+    cep,
+    city,
+    bairro,
+    uf,
+    abertura,
+    fechamento,
+    telefone,
+    foto,
+    urlHospital,
+    DutyUrl,
+    idDuty,
+  } = route.params;
 
+  const [urlDuty, setUrlDuty] = useState('');
+  const [urlDoctor, setUrlDoctor] = useState('');
+  const [urlHosp, setUrlHosp] = useState('');
+
+  useEffect(() => {
+
+    const data = doctorJson + idDoctor
+    setUrlDoctor(data)
+
+  }, [])
+
+  useEffect(() => {
+
+    const dataDuty = DutyUrl + idDuty
+    setUrlDuty(dataDuty)
+
+  }, [])
+
+  useEffect(() => {
+
+    const dataHospital = urlHospital + foto
+    setUrlHosp(dataHospital)
+
+  }, [])
 
   function handleFavActive(type: true | false) {
     setIsActive(type)
 
   }
-
-  const [dutyOpen, setDutyOpen] = useState(false);
-
-  function HandleOpenDutyPage() {
-    setDutyOpen(true)
-  }
-
-  function HandleCloseDutyPage() {
-    setDutyOpen(false)
-  }
-
-
-  const [doctorsOpen, setDoctorsOpen] = useState(false)
-
-  function HandleOpenDoctorsPage() {
-    setDoctorsOpen(true)
-  }
-
-  function HandleCloseDoctorsPage() {
-    setDoctorsOpen(false)
-  }
-
 
   const navigation = useNavigation();
 
@@ -81,7 +100,7 @@ export function HospitalPage({ route }) {
         </Return>
 
         <Title
-        maxLenght={30}>{route.params?.name}</Title>
+          maxLenght={30}>{route.params?.name}</Title>
 
         <Favorite
           isActive={isActive}
@@ -98,9 +117,9 @@ export function HospitalPage({ route }) {
 
       <Search placeholder='Pesquise um plantão ou especialidade médica aqui' />
 
-        <HospitalPicture></HospitalPicture>
-        
-  
+      <HospitalPicture source={{uri: urlHosp}} />
+
+
 
 
       <HospitalInfo>
@@ -141,11 +160,37 @@ export function HospitalPage({ route }) {
 
         <Services>
 
-          <DutyButton onPress={HandleOpenDutyPage}>
+          <DutyButton onPress={() => navigation.navigate('Duty', {
+            urlDuty: urlDuty,
+            name: name,
+            endereço: endereço,
+            cep: cep,
+            city: city,
+            bairro: bairro,
+            uf: uf,
+            abertura: abertura,
+            fechamento: fechamento,
+            telefone: telefone,
+            foto: foto,
+            urlHospital: urlHospital
+          })}>
             <TitleButton>Ver Plantões</TitleButton>
           </DutyButton>
 
-          <DoctorsButton onPress={HandleOpenDoctorsPage}>
+          <DoctorsButton onPress={() => navigation.navigate('Doctors', {
+            urlDoctor: urlDoctor,
+            name: name,
+            endereço: endereço,
+            cep: cep,
+            city: city,
+            bairro: bairro,
+            uf: uf,
+            abertura: abertura,
+            fechamento: fechamento,
+            telefone: telefone,
+            foto: foto,
+            urlHospital: urlHospital
+          })}>
             <TitleButton>Ver Médicos</TitleButton>
           </DoctorsButton>
 
@@ -158,13 +203,6 @@ export function HospitalPage({ route }) {
 
       </Filds>
 
-      <Modal visible={doctorsOpen}>
-        <Doctors closeModal={HandleCloseDoctorsPage} />
-      </Modal>
-
-      <Modal visible={dutyOpen}>
-        <Duty closeModal={HandleCloseDutyPage} />
-      </Modal>
     </Container>
   );
 }

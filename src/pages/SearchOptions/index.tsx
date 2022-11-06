@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import api from '../services/api';
+import axios from 'axios';
 
 import {
   Container,
@@ -36,21 +38,9 @@ export function SearchOptions() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const getHospital = async () => {
-    try {
-      const response = await fetch('http://192.168.15.45/buscaSusWeb2-main/buscaSusWeb2-main//assets/json/json-hospital.php');
-
-      const json = await response.json();
-      setData(json.hospitais);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }
 
   useEffect(() => {
-    getHospital();
+  axios.get(`http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-admin/hospital//`).then((response)=> { setData(response.data);})
   }, []);
 
   return (
@@ -73,7 +63,7 @@ export function SearchOptions() {
         </Search>
         <RecommendBox>
           <HeaderRecommend>Hospitais recomendados</HeaderRecommend>
-          {isLoading ? <ActivityIndicator /> : (
+          
             <HospitalSearchRecommended
               data={data}
               keyExtractor={({ idHospital }, index) => idHospital}
@@ -91,8 +81,13 @@ export function SearchOptions() {
                       uf: item.ufHospital,
                       abertura: item.aberturaHospital,
                       fechamento: item.fechamentoHospital,
-                      telefone: item.numTelefone
-
+                      telefone: item.numTelefone,
+                      urlHospital:'http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-admin/img/',
+                      foto: item.fotoHospital,
+                      DutyUrl: 'http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-hospital/plantao/?idHospital=',
+                      idDuty: item.idHospital,
+                      doctorJson: 'http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-hospital/medico/?idHospital=',
+                      idDoctor: item.idHospital,
                     })}
                 >
 
@@ -107,7 +102,7 @@ export function SearchOptions() {
                 </RecommendedHospitalView>
               )}
             />
-          )}
+          
         </RecommendBox>
       </Container>
 

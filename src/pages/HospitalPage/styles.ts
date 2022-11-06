@@ -75,10 +75,9 @@ width:90%;
 
 `
 
-export  const HospitalPicture = styled.View`
+export  const HospitalPicture = styled.Image`
 height: ${RFValue(180)}px;
 width:${RFPercentage(50)}px;  
-background-color: ${(props) => props.theme.colors.ItensInputColor};
 margin:${RFValue(24)}px;
 align-self: center;
 

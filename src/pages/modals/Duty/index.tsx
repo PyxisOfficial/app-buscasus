@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
-
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
 import {
@@ -22,32 +22,30 @@ import {
 import { Button } from '../../../components/Button';
 
 
-interface props  {
-    closeModal: () => void
-}
 
-export function Duty({closeModal}: props) {
+export function Duty({route}, {closeModal}: props) {
 
+
+    const {
+        urlDuty,
+        name,
+        endereço,
+        cep,
+        city,
+        bairro,
+        uf,
+        abertura,
+        fechamento,
+        telefone,}  =  route.params;
+
+        
     const navigation = useNavigation();
 
-    const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
-    const getPlantao = async () => {
-        try {
-            const response = await fetch('http://192.168.15.45/buscaSusWeb2-main/buscaSusWeb2-main//assets/json/json-plantao.php');
-            const json = await response.json();
-            setData(json.plantoes);
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-        }
-    }
-
     useEffect(() => {
-        getPlantao();
-    }, []);
+        axios.get(urlDuty).then((response)=> { setData(response.data);})
+        }, []);
 
     return (
         <Container>
@@ -56,7 +54,7 @@ export function Duty({closeModal}: props) {
                 <Title>Plantões Disponiveis</Title>
             </Header>
 
-            {isLoading ? <ActivityIndicator /> : (
+          
                 <DoctorsList
                     data={data}
                     keyExtractor={({ idPlantao }, index) => idPlantao}
@@ -86,11 +84,23 @@ export function Duty({closeModal}: props) {
 
                     )}
                 />
-            )}
+          
         </Filds>
 
             <Footer>
-                <Button Title='Voltar' onPress={closeModal} />
+                <Button Title='Voltar'onPress={() => navigation.navigate('HospitalPage', {
+          DutyUrl: '',
+          idDuty: '',
+          name: name,
+          endereço: endereço,
+          cep: cep,
+          city: city,
+          bairro: bairro,
+          uf: uf,
+          abertura: abertura,
+          fechamento: fechamento,
+          telefone: telefone,
+        })} />
             </Footer>
         </Container>
 
