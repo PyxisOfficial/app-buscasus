@@ -5,6 +5,7 @@ import { Map } from '../../components/Map';
 import {
   Container,
   Tab,
+  Search,
   UserAccont,
   TabSearch,
   VoiceSearchButton,
@@ -12,12 +13,35 @@ import {
   UserAccontButton,
   TabSearchButton,
   Header,
-  ProfileUserIcon,
+  HeaderContent,
   UserName,
   AutoMessage,
   TextHeaderBox,
+  Title,
+  SearchIcon,
+  SearchContent,
+  SearchText,
+  Profile,
   UserIcon,
+  Menu,
+  MenuIcon,
+  ShortCut,
+  ShortCutHospital,
+  NearbyHospitals,
+  AllHospitals,
+  ShortCutDoctor,
+  Specialty,
+  AllDoctors,
+  ShortCutTitle,
+  PatternText,
+  OthersFunctionalities,
+  Favorites,
+  IconView,
+  Icon,
+  Activy,
+
 } from './style';
+import { Logo } from '../../components/Logo';
 
 
 
@@ -50,24 +74,102 @@ export function Dashboard() {
   return (
     <>
       <Header>
+        <Profile>
 
-   
+          <UserIcon source={{ uri: 'https://avatars.githubusercontent.com/u/72211521?v=4' }} />
+          <TextHeaderBox>
 
-        <TextHeaderBox>
-          <AutoMessage>{grettings}</AutoMessage>
-          <UserName>Usuário</UserName>
-        </TextHeaderBox>
+            <AutoMessage>{grettings}</AutoMessage>
+            <UserName>Leandro</UserName>
 
-            </Header>
+          </TextHeaderBox>
+        </Profile>
+
+        <Menu>
+          <MenuIcon name='ios-menu' />
+        </Menu>
+      </Header>
+
       <Container>
 
-        <Map />
+        <HeaderContent>
+          <Logo height={50} width={50} />
+          <Title>BuscaSus</Title>
+        </HeaderContent>
 
-        </Container>
+        <SearchIcon name="search" />
+        <SearchContent>
+          <Search onPress={() => navigation.navigate('SearchOptions')} >
+            <SearchText>Pesquisar</SearchText>
+          </Search>
+        </SearchContent>
+
+
+
+        <ShortCutTitle>Pesquisar por:</ShortCutTitle>
+
+        <ShortCut>
+
+          <ShortCutHospital>
+
+            <NearbyHospitals>
+              <PatternText>Hospitais Próximos</PatternText>
+              
+            </NearbyHospitals>
+
+            <AllHospitals>
+            <PatternText>Hospitais</PatternText>
+            </AllHospitals>
+
+          </ShortCutHospital>
+
+
+
+          <ShortCutDoctor>
+
+            <Specialty>
+            <PatternText>Especialidades</PatternText>
+            </Specialty>
+
+            <AllDoctors>
+            <PatternText>Médicos</PatternText>
+            </AllDoctors>
+
+          </ShortCutDoctor>
+
+        </ShortCut>
+
+        <OthersFunctionalities>
+
+          <Favorites>
+
+            <IconView>
+              <Icon name='heart'/>
+            </IconView>
+
+            <PatternText>Ver Favoritos</PatternText>
+
+          </Favorites>
+
+          <Activy>
+
+          <IconView>
+              <Icon name='clock'/>
+            </IconView>
+
+            <PatternText>Atividade</PatternText>
+
+          </Activy>
+
+        </OthersFunctionalities>
+
+      </Container>
+
       <Tab>
         <UserAccontButton>
           <UserAccont
-            name='gear'
+            name='person'
+            onPress={() => navigation.navigate('Login')}
           />
         </UserAccontButton>
 
@@ -76,8 +178,8 @@ export function Dashboard() {
         </VoiceSearchButton>
 
         <TabSearchButton
-          onPress={() => navigation.navigate('SearchOptions')}>
-          <TabSearch name='ios-search' />
+          onPress={() => navigation.navigate('Dashboard')}>
+          <TabSearch name='home' />
         </TabSearchButton>
       </Tab>
     </>

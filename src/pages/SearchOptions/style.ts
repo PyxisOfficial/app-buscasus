@@ -136,7 +136,7 @@ color: ${(props) => props.theme.colors.MidGreen};
 `;
 
 
-export const TabSearch = styled(Ionicons)`
+export const TabSearch = styled(AntDesign)`
 font-size: ${RFValue(30)}px;
 color: ${(props) => props.theme.colors.MidGreen};
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
@@ -23,7 +22,7 @@ import { Button } from '../../../components/Button';
 
 
 
-export function Duty({route}, {closeModal}: props) {
+export function Duty({route}) {
 
 
     const {

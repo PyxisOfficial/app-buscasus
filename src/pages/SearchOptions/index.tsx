@@ -108,9 +108,9 @@ export function SearchOptions() {
 
       <Tab>
         <UserAccontButton>
-          <UserAccont
-            name='gear'
-
+        <UserAccont
+            name='person'
+            onPress={() => navigation.navigate('Login')}
           />
         </UserAccontButton>
 
@@ -119,8 +119,8 @@ export function SearchOptions() {
         </VoiceSearchButton>
 
         <TabSearchButton
-          onPress={() => navigation.navigate('SearchOptions')}>
-          <TabSearch name='ios-search' />
+          onPress={() => navigation.navigate('Dashboard')}>
+          <TabSearch name='home' />
         </TabSearchButton>
       </Tab>
 

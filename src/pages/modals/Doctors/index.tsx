@@ -10,7 +10,6 @@ import {
     DoctorsList,
     DoctorInfo,
     DoctorPhoto,
-    DoctorIcon,
     Info,
     Name,
     Specialty,
@@ -50,22 +49,6 @@ export function Doctors({route}, {closeModal}: props) {
         axios.get(urlDoctor).then((response)=> { setData(response.data);})
         }, []);
 
- function loadDoctorPhoto(){
-    
-
-    const img = data;
-    
-    const doctorsPhotos = img.map((item)  => {
-      const foto = string(item.fotoMedico);
-    
-
-  return {
-    foto
-    }
-    
-  })
-  
-  }
    const [imgDoctor, setImgDoctor] = useState('')
    useEffect(() => {
 
