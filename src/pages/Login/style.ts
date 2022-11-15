@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
-import {RFPercentage, RFValue} from 'react-native-responsive-fontsize';
-import {MaterialIcons, Ionicons} from '@expo/vector-icons'
+import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { MaterialIcons, Ionicons } from '@expo/vector-icons'
+
 
 export const Container = styled.View`
   flex: 1;
@@ -15,7 +16,7 @@ align-self: center;
 margin-top: 10px;
 color: ${(props) => props.theme.colors.MidGreen};
 `
-export const Input= styled.TextInput`
+export const Input = styled.TextInput`
 
 width: ${RFValue(235)}px;
 border-bottom-color:${(props) => props.theme.colors.DarkGreen} ;
@@ -40,33 +41,6 @@ border-color:  ${(props) => props.theme.colors.BACKGROUND};
 
 `
 
-
-export const LinkBox = styled.View`
-
-flex-direction: row;
-align-self: center;
-margin-top: ${RFPercentage(10)}px;
-
-`
-export const TextBeforeLink = styled.Text`
-
-font-size: 12px;
-font-family: ${(props) => props.theme.Fonts.Regular};
-`
-export const Link = styled.TouchableOpacity`
-
-background-color: ${(props) => props.theme.colors.BACKGROUND};
-
-`
-;
-export const TextLink = styled.Text`
-font-size: 12px;
-color:${(props) => props.theme.colors.MidGreen} ;
-
-font-family: ${(props) => props.theme.Fonts.Medium};
-`
-
-
 export const Onda = styled.Image`
 flex: 1;
 width: 100%;
@@ -77,7 +51,7 @@ export const LogoBox = styled.View`
 flex-direction: row;
 align-items: center;
 justify-content: center;
-margin: ${RFValue(120)}px ${RFValue(0)}px ${RFValue(20)}px ${RFValue(-20)}px;
+margin: ${RFPercentage(18)}px ${RFValue(0)}px ${RFValue(20)}px ${RFValue(-20)}px;
  
 
 `
@@ -91,3 +65,44 @@ color: ${(props) => props.theme.colors.MidGreen};
 margin-left: -30px;
 `
 
+export const LoginOptions = styled.View`
+
+flex-direction: row;
+align-self: center;
+align-items: center;
+margin-top: ${RFPercentage(12)}px;
+
+
+ `;
+export const SingInGoogle = styled.TouchableOpacity`
+width: 35%;
+border-width: 1.5px;
+border-radius: 5px;
+  border-color: ${({theme}) => theme.colors.GreenLight};
+height: ${RFPercentage(7)}px;
+flex-direction: row;
+align-items: center;
+margin: ${RFValue(0)}px ${RFValue(10)}px;
+justify-content: center; 
+
+ `;
+export const SingUp = styled.TouchableOpacity`
+ width: 35%;;
+  border-width: 1.5px;
+  border-radius: 5px;
+  border-color: ${({theme}) => theme.colors.GreenLight};
+  height: ${RFPercentage(7)}px;
+  flex-direction: row;
+  align-items: center;
+margin: ${RFValue(0)}px ${RFValue(10)}px;
+justify-content: center;
+ `;
+export const Icon = styled.Image`
+margin-right: ${RFValue(10)}px;
+ `;
+export const Title = styled.Text`
+  text-align: center;
+  font-size: 10px;
+font-family: ${(props) => props.theme.Fonts.Medium};
+  
+ `;

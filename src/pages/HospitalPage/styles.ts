@@ -58,7 +58,7 @@ align-items: center;
 justify-content: center; 
 flex-direction: row ;
 justify-content: space-between;
-margin:${RFValue(70)}px ${RFValue(20)}px ${RFValue(10)}px ${RFValue(20)}px;
+margin:${RFValue(50)}px ${RFValue(20)}px ${RFValue(10)}px ${RFValue(20)}px;
 `
 
 

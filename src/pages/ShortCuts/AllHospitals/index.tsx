@@ -1,66 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { TabBar } from '../../components/TabBar';
+import { TabBar } from '../../../components/TabBar'
 import axios from 'axios';
 
 import {
   Container,
   Search,
   SearchIcon,
-  HospitalSearchRecommended,
-  RecommendedHospital,
-  HeaderRecommend,
-  RecommendBox,
-  RecommendedHospitalView,
+  SearchContent,
+  HospitalSearch,
+  Hospital,
+  HospitalView,
   HospitalIcon,
   HospitalName,
   HospitalAddress,
-  Input,
-  Filter,
-  FilterIcon,
-  Return,
-  IconReturn,
-} from './style';
+} from './styles';
 
-
-export function SearchOptions() {
+export function AllHospitals() {
 
   const navigation = useNavigation();
 
   const [data, setData] = useState([]);
 
-
   useEffect(() => {
-  axios.get(`http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-admin/hospital//`).then((response)=> { setData(response.data);})
+    axios.get(`http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-admin/hospital//`).then((response) => { setData(response.data); })
   }, []);
 
   return (
     <>
       <Container>
-        <Search>
-          <Return
 
-            onPress={() => navigation.goBack()}>
-            <IconReturn name='arrowleft' />
-          </Return>
-          <SearchIcon name="search" />
-          <Input
-            placeholder='Pesquise um hospital ou especialidade'
-          />
+        <SearchIcon name="search" />
+        <SearchContent>
+          <Search placeholder='Pesquisar hospital' />
+        </SearchContent>
 
-          <Filter>
-            <FilterIcon name='ios-filter' />
-          </Filter>
-        </Search>
-        <RecommendBox>
-          <HeaderRecommend>Hospitais recomendados</HeaderRecommend>
-          
-            <HospitalSearchRecommended
+        
+            <HospitalSearch
               data={data}
               keyExtractor={({ idHospital }, index) => idHospital}
               renderItem={({ item }) => (
 
-                <RecommendedHospitalView
+                <HospitalView
                   onPress={() => navigation.navigate('HospitalPage',
                     {
 
@@ -82,23 +63,23 @@ export function SearchOptions() {
                     })}
                 >
 
-                  <HospitalIcon name="hospital" />
-                  <RecommendedHospital>
+                  <HospitalIcon source={{uri:'http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-admin/img/' + item.fotoHospital }}/>
+                  <Hospital>
 
                     <HospitalName>{item.nomeHospital}</HospitalName>
 
                     <HospitalAddress>{item.logradouroHospital}</HospitalAddress>
 
-                  </RecommendedHospital>
-                </RecommendedHospitalView>
+                  </Hospital>
+                </HospitalView>
               )}
             />
           
-        </RecommendBox>
+  
       </Container>
 
-      <TabBar/>
+     <TabBar/>
+
     </>
   );
-};
-
+}

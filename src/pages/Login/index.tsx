@@ -5,28 +5,30 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 
+import { Alert } from 'react-native';
+
 import {
   Container,
   ProjectName,
   InputImage,
   InputBox,
-  LinkBox,
-  TextBeforeLink,
-  TextLink,
-  Link,
   Onda,
   LogoBox,
   HideButton,
   HideIcon,
-  Content,
-  Footer,
+  LoginOptions,
+  SingInGoogle,
+  SingUp,
+  Icon,
+  Title,
+    
+
 } from './style';
 
 import { Logo } from '../../components/Logo';
 import { Button } from '../../components/Button';
-import { Cadastro } from '../Cadastro';
-import { Dashboard } from '../Dashboard';
 import { InputForm } from '../../components/InputForm';
+import { useAuth } from '../../hooks/auth'
 
 
 
@@ -47,6 +49,26 @@ const schema = Yup.object().shape({
 })
 
 export function Login() {
+
+
+  const { SignInWithGoogle } = useAuth();
+
+  async function HandleSignInWithGoogle() {
+    
+    try{
+
+      await SignInWithGoogle();
+
+    }
+
+    catch(error){
+
+      console.log(error);
+      Alert.alert('Não Foi possivel conectar a uma conta Google')
+
+    }
+
+  }
 
   const {
     formState: { errors },
@@ -144,14 +166,27 @@ export function Login() {
 
         </KeyboardAvoidingView>
 
-        <LinkBox>
-          <TextBeforeLink>Não possui uma conta no nosso App? Faça o</TextBeforeLink>
-          <Link
-            onPress={() => navigation.navigate('Cadastro')}
-          >
-            <TextLink> Cadastro!</TextLink>
-          </Link>
-        </LinkBox>
+        <LoginOptions>
+
+          <SingInGoogle onPress={HandleSignInWithGoogle}>
+
+          
+            <Icon source={require('../../assets/google.jpg')}/>
+          
+
+            <Title>
+              Entrar com {'\n'}Google
+               </Title>
+
+          </SingInGoogle>
+
+          <Title>ou</Title>
+
+          <SingUp onPress={() => navigation.navigate('Cadastro')}>
+                    <Title>Cadastre-se</Title>
+          </SingUp>
+
+        </LoginOptions>
 
         <Onda source={require('../../assets/onda.png')} />
 

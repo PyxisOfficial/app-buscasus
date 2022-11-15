@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Map } from '../../components/Map';
-
+import { TabBar } from '../../components/TabBar';
+import axios from 'axios';
 import {
   Container,
-  Tab,
   Search,
-  UserAccont,
-  TabSearch,
-  VoiceSearchButton,
-  VoiceIcon,
-  UserAccontButton,
-  TabSearchButton,
   Header,
   HeaderContent,
   UserName,
@@ -23,8 +16,8 @@ import {
   SearchText,
   Profile,
   UserIcon,
-  Menu,
-  MenuIcon,
+  Logout,
+  LogoutTitle,
   ShortCut,
   ShortCutHospital,
   NearbyHospitals,
@@ -42,12 +35,13 @@ import {
 
 } from './style';
 import { Logo } from '../../components/Logo';
+import { useAuth } from '../../hooks/auth';
 
 
 
 export function Dashboard() {
 
-
+  const { signOut, user } = useAuth();
   const navigation = useNavigation();
 
   const [grettings, setGrettings] = useState('');
@@ -76,18 +70,19 @@ export function Dashboard() {
       <Header>
         <Profile>
 
-          <UserIcon source={{ uri: 'https://avatars.githubusercontent.com/u/72211521?v=4' }} />
+          <UserIcon source={{ uri:user.photo}} />
           <TextHeaderBox>
 
             <AutoMessage>{grettings}</AutoMessage>
-            <UserName>Leandro</UserName>
+            <UserName>{user.name}</UserName>
 
           </TextHeaderBox>
         </Profile>
 
-        <Menu>
-          <MenuIcon name='ios-menu' />
-        </Menu>
+      <Logout onPress={signOut}>
+        <LogoutTitle>Sair</LogoutTitle>
+      </Logout>
+
       </Header>
 
       <Container>
@@ -117,7 +112,7 @@ export function Dashboard() {
               
             </NearbyHospitals>
 
-            <AllHospitals>
+            <AllHospitals onPress={() => navigation.navigate('AllHospitals')} >
             <PatternText>Hospitais</PatternText>
             </AllHospitals>
 
@@ -141,7 +136,7 @@ export function Dashboard() {
 
         <OthersFunctionalities>
 
-          <Favorites>
+          <Favorites onPress={() => navigation.navigate('Favoritos')}>
 
             <IconView>
               <Icon name='heart'/>
@@ -151,7 +146,7 @@ export function Dashboard() {
 
           </Favorites>
 
-          <Activy>
+          <Activy  onPress={() => navigation.navigate('Recentes')}>
 
           <IconView>
               <Icon name='clock'/>
@@ -165,23 +160,8 @@ export function Dashboard() {
 
       </Container>
 
-      <Tab>
-        <UserAccontButton>
-          <UserAccont
-            name='person'
-            onPress={() => navigation.navigate('Login')}
-          />
-        </UserAccontButton>
-
-        <VoiceSearchButton>
-          <VoiceIcon name="mic" />
-        </VoiceSearchButton>
-
-        <TabSearchButton
-          onPress={() => navigation.navigate('Dashboard')}>
-          <TabSearch name='home' />
-        </TabSearchButton>
-      </Tab>
+     <TabBar/>
+     
     </>
   );
 }
