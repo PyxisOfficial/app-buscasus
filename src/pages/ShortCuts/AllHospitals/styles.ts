@@ -10,8 +10,8 @@ export const Search = styled.TextInput`
 
  background-color: ${(props) => props.theme.colors.White};
  margin: ${RFValue(-10)}px ${RFValue(0)}px;
- width:${RFPercentage(50)}px ;
- height: ${RFValue(38)}px;
+ width:90% ;
+ height: ${RFPercentage(4)}px;
  border-radius: 20px;
  flex-direction: row;
  font-size:${RFValue(11)}px;
@@ -20,14 +20,14 @@ export const Search = styled.TextInput`
 align-self:center;
  border-width: 1px;
  border-color: ${({ theme }) => theme.colors.GreenLight};
- font-size: ${RFValue(13)}px;
+ font-size: ${RFValue(10)}px;
  font-family: ${(props) => props.theme.Fonts.Medium} ;
  padding-top: 3px;
 `
 export const SearchIcon = styled(MaterialIcons)`
-margin-left: ${RFValue(40)}px;
-margin-top:${RFPercentage(16.5)}px;
-font-size: ${RFValue(25)}px;
+margin-left: ${RFValue(30)}px;
+margin-top:34%;
+font-size: ${RFValue(20)}px;
 color: ${(props) => props.theme.colors.GreenLight};
 z-index: 1;
 position: absolute;
@@ -84,9 +84,9 @@ export const HospitalIcon = styled.Image`
 export const HospitalName = styled.Text`
 
 font-family: ${(props) => props.theme.Fonts.Medium} ;
-font-size: ${RFValue(10)}px;
+font-size: ${RFValue(9.5)}px;
 color: ${(props) => props.theme.colors.MidGray};
-padding-left: ${RFValue(14)}px;
+padding-left: ${RFValue(10)}px;
 margin-Bottom:-5px;
 
 `
@@ -95,6 +95,6 @@ export const HospitalAddress = styled.Text`
 font-family: ${(props) => props.theme.Fonts.Medium} ;
 font-size: ${RFValue(9)}px;
 color: ${(props) => props.theme.colors.MidGray};
-padding-left: ${RFValue(14)}px;
+padding-left: ${RFValue(10)}px;
 
 `

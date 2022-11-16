@@ -27,11 +27,7 @@ import {
   AllDoctors,
   ShortCutTitle,
   PatternText,
-  OthersFunctionalities,
-  Favorites,
-  IconView,
-  Icon,
-  Activy,
+
 
 } from './style';
 import { Logo } from '../../components/Logo';
@@ -54,7 +50,7 @@ export function Dashboard() {
       setGrettings('Bom Dia');
     }
     else if (CurrentHour >= 12 && CurrentHour < 18) {
-      setGrettings('Bom Tarde');
+      setGrettings('Boa Tarde');
     }
 
     else {
@@ -134,32 +130,10 @@ export function Dashboard() {
 
         </ShortCut>
 
-        <OthersFunctionalities>
-
-          <Favorites onPress={() => navigation.navigate('Favoritos')}>
-
-            <IconView>
-              <Icon name='heart'/>
-            </IconView>
-
-            <PatternText>Ver Favoritos</PatternText>
-
-          </Favorites>
-
-          <Activy  onPress={() => navigation.navigate('Recentes')}>
-
-          <IconView>
-              <Icon name='clock'/>
-            </IconView>
-
-            <PatternText>Atividade</PatternText>
-
-          </Activy>
-
-        </OthersFunctionalities>
-
+        
       </Container>
 
+   
      <TabBar/>
      
     </>

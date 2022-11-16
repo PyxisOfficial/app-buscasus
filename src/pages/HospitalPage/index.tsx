@@ -15,7 +15,6 @@ import {
   IconReturn,
   Search,
   HospitalPicture,
-  HospitalPhoto,
   HospitalInfo,
   HeaderInfo,
   Icon,
@@ -95,7 +94,7 @@ export function HospitalPage({ route }) {
 
         <Return
 
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.navigate('SearchOptions')}>
           <IconReturn name='arrowleft' />
         </Return>
 
@@ -117,7 +116,7 @@ export function HospitalPage({ route }) {
 
       <Search placeholder='Pesquise um plantão ou especialidade médica aqui' />
 
-      <HospitalPicture source={{uri: urlHosp}} />
+      <HospitalPicture source={urlHosp ? {uri:urlHosp} : null} />
 
 
 

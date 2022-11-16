@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { TabBar } from '../../../components/TabBar'
 import axios from 'axios';
-
+import { TouchableWithoutFeedback, Keyboard, Alert, KeyboardAvoidingView } from 'react-native';
 import {
   Container,
   Search,
@@ -23,13 +23,15 @@ export function AllHospitals() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-admin/hospital//`).then((response) => { setData(response.data); })
+    axios.get(`http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-admin/hospital//`)
+    .then((response) => { setData(response.data); })
   }, []);
 
   return (
     <>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Container>
-
+      
         <SearchIcon name="search" />
         <SearchContent>
           <Search placeholder='Pesquisar hospital' />
@@ -77,7 +79,7 @@ export function AllHospitals() {
           
   
       </Container>
-
+</TouchableWithoutFeedback>
      <TabBar/>
 
     </>

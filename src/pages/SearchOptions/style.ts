@@ -36,7 +36,7 @@ export const Input= styled.TextInput`
  border-width: 1px;
  border-color: ${(props) => props.theme.colors.ItensInputColor};
  flex-direction: row;
- font-size:${RFValue(11)}px;
+ font-size:${RFValue(9)}px;
  padding-left:${RFValue(40)}px ;
 
 
@@ -44,8 +44,8 @@ export const Input= styled.TextInput`
 
 export const SearchIcon = styled(MaterialIcons)`
   margin-top:10px;
-  font-size: ${RFValue(23)}px;
-  color: ${(props) => props.theme.colors.ItensInputColor};
+  font-size: ${RFValue(17)}px;
+  color: ${(props) => props.theme.colors.GreenLight};
   margin-left: 50px;
   position: absolute;
   z-index: 1;

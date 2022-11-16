@@ -16,6 +16,7 @@ export const Title = styled.Text`
 font-size: ${RFValue(14)}px;
 color: ${(props) => props.theme.colors.DarkGray};
 font-family: ${(props) => props.theme.Fonts.Medium} ;
+text-align: center;
 `
 export const Return = styled.TouchableOpacity`
 `
@@ -52,13 +53,11 @@ margin:${RFValue(40)}px ${RFValue(20)}px ${RFValue(10)}px ${RFValue(20)}px;
 
 `
 export const Header = styled.View`
-
-
 align-items: center;
 justify-content: center; 
 flex-direction: row ;
 justify-content: space-between;
-margin:${RFValue(50)}px ${RFValue(20)}px ${RFValue(10)}px ${RFValue(20)}px;
+margin:${RFValue(50)}px ${RFValue(10)}px ${RFValue(10)}px ${RFValue(10)}px;
 `
 
 
@@ -68,7 +67,7 @@ background-color: ${(props) => props.theme.colors.White};
 width:90%;
  border-radius: 20px;
  border-width: 1px;
- border-color: ${(props) => props.theme.colors.ItensInputColor};
+ border-color: ${(props) => props.theme.colors.MidGreen};
  flex-direction: row;
  font-size:${RFValue(10)}px;
  padding-left:${RFValue(20)}px ;
@@ -77,10 +76,12 @@ width:90%;
 
 export  const HospitalPicture = styled.Image`
 height: ${RFValue(180)}px;
-width:${RFPercentage(50)}px;  
+width:90%;  
 margin:${RFValue(24)}px;
 align-self: center;
-
+border-radius: 20px;
+border-width: 2px;
+border-color: ${(props) => props.theme.colors.MidGreen};
 `
 
 
@@ -125,8 +126,8 @@ font-family: ${(props) => props.theme.Fonts.Regular} ;
   
  `
  export const Footer = styled.View`
- width: 100%;
- padding: 30px;
+
+margin-bottom: 15%;
  
 
 `
@@ -140,16 +141,14 @@ export const Filds = styled.View`
  flex-direction: row;
  align-items: center;
  justify-content: center;
- justify-content: space-between;
- padding:${RFValue(20)}px   ${RFValue(35)}px;
- 
+  
  `
  export const DutyButton = styled.TouchableOpacity.attrs({
 
   activeOpacity: .7
  })`
  
- width: ${RFValue(150)}px;
+ width: 45%;
 height: ${RFPercentage(5)}px;
 border-radius: 20px;
 border-width:1px;
@@ -159,14 +158,14 @@ align-items: center ;
 margin-top: ${RFValue(20)}px;
 padding: ${RFValue(5)}px;
 justify-content: center;
-
+margin-right: ${RFValue(5)}px;
  `
  export const DoctorsButton = styled.TouchableOpacity.attrs({
 
   activeOpacity: .7
  })`
  
- width: ${RFValue(150)}px;
+ width: 45%;
 height: ${RFPercentage(5)}px;
 border-radius: 20px;
 border-width:1px;
@@ -174,12 +173,13 @@ border-color: ${(props) => props.theme.colors.MidGreen};
 align-self: center;
 align-items: center ;
 margin-top: ${RFValue(20)}px;
+margin-left: ${RFValue(5)}px;
 padding: ${RFValue(5)}px;
 justify-content: center;
  `
 
 export const TitleButton = styled.Text`
-font-size: ${RFValue(13)}px;
+font-size: ${RFValue(11)}px;
 color: ${(props) => props.theme.colors.MidGreen};
 font-family: ${(props) => props.theme.Fonts.Medium} ;
 `

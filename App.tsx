@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import 'react-native-gesture-handler';
+import React from 'react';
 import {ThemeProvider} from 'styled-components'
 import { Routes } from './src/routes/index';
 
@@ -37,7 +38,7 @@ export default function App() {
     <ThemeProvider theme={Theme} >
 
         <AuthProvider>
-        <Routes/>
+         <Routes/>
         </AuthProvider>
   
      </ThemeProvider>

@@ -20,7 +20,7 @@ export function TabBar() {
         <UserAccontButton>
           <UserAccont
             name='ios-menu'
-            onPress={() => navigation.navigate('Profile')}
+            onPress={() => navigation.openDrawer()}
           />
         </UserAccontButton>
 

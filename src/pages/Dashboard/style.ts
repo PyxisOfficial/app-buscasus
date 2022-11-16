@@ -9,7 +9,7 @@ export const Container = styled.View`
 export const Header = styled.View`
     
     background-color: ${(props) => props.theme.colors.White};
-    height:18 %;
+    height:18%;
     align-items: center;
     flex-direction: row;
     padding: ${(RFValue(40))}px ${(RFValue(20))}px 0px;
@@ -228,7 +228,7 @@ export const ShortCutTitle = styled.Text`
 
 font-family: ${(props) => props.theme.Fonts.Bold} ;
 font-size: ${RFValue(20)}px;
-margin: 10px 30px;
+margin: 60px 30px 20px 30px;
 color: ${(props) => props.theme.colors.MidGreen};
 
 `
@@ -239,119 +239,3 @@ font-size: ${RFValue(12)}px;
 margin: -3px 0px;
 color: ${(props) => props.theme.colors.DarkGray};
 `
-export const OthersFunctionalities = styled.View`
-  
-align-items: center;
-margin-top: 20px;
-
-
-  `
-export const Favorites = styled.TouchableOpacity.attrs({
-
-  activeOpacity: .7,
-})`
-  background-color: ${(props) => props.theme.colors.BACKGROUND};
-  height:${(RFPercentage(6))}px;
-  width: 90%;
-  border-width:1px;
-  border-color: ${(props) => props.theme.colors.LightGray};
-  border-radius:7px;
-  margin-bottom: 10px;
-  flex-direction: row;
-  align-items: center;
-  `
-export const IconView = styled.View`
-  width: ${RFValue(50)}px;
-  height: ${RFValue(41)}px;
-  background-color: ${(props) => props.theme.colors.GreenLight};
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
-  margin-left:-1px;
- 
-  align-items: center;
-  justify-content: center;
-  margin-right:10px;
-  `
-export const Icon = styled(Feather)`
-  color: ${(props) => props.theme.colors.White};
-  font-size: ${RFValue(25)}px;
-  `
-export const Activy = styled.TouchableOpacity.attrs({
-
-  activeOpacity: .7,
-})`
-background-color: ${(props) => props.theme.colors.BACKGROUND};
-  height:${(RFPercentage(6))}px;
-  width: 90%;
-  border-width:1px;
-  border-color: ${(props) => props.theme.colors.LightGray};
-  border-radius:7px;
-  flex-direction: row;
-  align-items: center;
-  
-  `
-export const Tab = styled.View`
-
-background-color: ${(props) => props.theme.colors.White} ;
-width: 100%;
-height: ${RFPercentage(10)}px;
-align-self: flex-end;
-justify-content: space-between;
-flex-direction: row;
-align-items: center;
-padding: 0px ${RFValue(40)}px ;
-border-width: 1.5px;
-border-color: ${(props) => props.theme.colors.MidGreen} ;
-border-bottom-color:  ${(props) => props.theme.colors.White} ;;
-border-top-left-radius: 40px;
-border-top-right-radius: 40px;
-
-`;
-
-export const UserAccont = styled(Octicons)`
-font-size: ${RFValue(30)}px;
-color: ${(props) => props.theme.colors.MidGreen};
-
-`;
-
-
-export const TabSearch = styled(AntDesign)`
-font-size: ${RFValue(30)}px;
-color: ${(props) => props.theme.colors.MidGreen};
-
-`;
-
-
-
-export const VoiceSearchButton = styled.TouchableOpacity.attrs({
-
-  activeOpacity: (0.9),
-
-})`
-
-background-color: ${(props) => props.theme.colors.MidGreen};
-height: ${RFValue(90)}px;
-width: ${RFValue(90)}px;
-align-items:center;
-justify-content: center;
-margin-bottom:${RFValue(73)}px;
-border-radius: 100px;
-
-
-`
-export const VoiceIcon = styled(Feather)`
-font-size: ${RFValue(55)}px;
-color: ${(props) => props.theme.colors.White};
-`
-export const UserAccontButton = styled.TouchableOpacity.attrs({
-
-  activeOpacity: (0.5),
-
-})``
-
-
-export const TabSearchButton = styled.TouchableOpacity.attrs({
-
-  activeOpacity: (0.5),
-
-})``
