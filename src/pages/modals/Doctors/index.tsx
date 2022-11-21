@@ -40,7 +40,9 @@ export function Doctors({route}, {closeModal}: props) {
     uf,
     abertura,
     fechamento,
-    telefone,}  =  route.params;
+    telefone,
+    foto,
+    urlHospital,}  =  route.params;
 
     const navigation = useNavigation();
     const [data, setData] = useState([]);
@@ -49,13 +51,7 @@ export function Doctors({route}, {closeModal}: props) {
         axios.get(urlDoctor).then((response)=> { setData(response.data);})
         }, []);
 
-   const [imgDoctor, setImgDoctor] = useState('')
-   useEffect(() => {
 
-      const dataImg = 'http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-hospital/img/'
-      setImgDoctor(dataImg)
-  
-    }, [])
     return (
         <Container>
             <Filds>
@@ -71,7 +67,7 @@ export function Doctors({route}, {closeModal}: props) {
 
               <DoctorInfo>
 
-                <DoctorPhoto source={{uri: imgDoctor + item.fotoMedico}}/>
+                <DoctorPhoto source={{uri: 'http://192.168.15.45/buscaSus/api/area-hospital/img/' + item.fotoMedico}}/>
 
                 <Info>
 
@@ -98,6 +94,8 @@ export function Doctors({route}, {closeModal}: props) {
           abertura: abertura,
           fechamento: fechamento,
           telefone: telefone,
+          foto : foto,
+          urlHospital : urlHospital,
         })}/>
         </Footer>
         </Container>

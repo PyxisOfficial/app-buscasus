@@ -37,7 +37,7 @@ import { useAuth } from '../../hooks/auth';
 
 export function Dashboard() {
 
-  const { signOut, user } = useAuth();
+  const { signOut } : any = useAuth();
   const navigation = useNavigation();
 
   const [grettings, setGrettings] = useState('');
@@ -64,16 +64,7 @@ export function Dashboard() {
   return (
     <>
       <Header>
-        <Profile>
-
-          <UserIcon source={{ uri:user.photo}} />
-          <TextHeaderBox>
-
-            <AutoMessage>{grettings}</AutoMessage>
-            <UserName>{user.name}</UserName>
-
-          </TextHeaderBox>
-        </Profile>
+      
 
       <Logout onPress={signOut}>
         <LogoutTitle>Sair</LogoutTitle>
@@ -88,9 +79,11 @@ export function Dashboard() {
           <Title>BuscaSus</Title>
         </HeaderContent>
 
-        <SearchIcon name="search" />
+       
         <SearchContent>
           <Search onPress={() => navigation.navigate('SearchOptions')} >
+           <SearchIcon name="search" />
+          
             <SearchText>Pesquisar</SearchText>
           </Search>
         </SearchContent>
@@ -118,11 +111,11 @@ export function Dashboard() {
 
           <ShortCutDoctor>
 
-            <Specialty>
+            <Specialty onPress={() => navigation.navigate('Specialtys')}>
             <PatternText>Especialidades</PatternText>
             </Specialty>
 
-            <AllDoctors>
+            <AllDoctors onPress={() => navigation.navigate('AllDoctors')}>
             <PatternText>Médicos</PatternText>
             </AllDoctors>
 

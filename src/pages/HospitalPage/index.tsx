@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Doctors } from '../modals/Doctors';
-import { Duty } from '../modals/Duty';
 
-import { Modal } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   Container,
-  Actions,
   Title,
   Return,
   Header,
@@ -32,7 +28,26 @@ import {
   FavIcon,
 } from './styles';
 import { Button } from '../../components/Button';
+import { useEvent } from 'react-native-reanimated';
 
+
+interface hospitalProps {
+  DoctorJson: string
+  IdDoctor: string
+  Name: string
+  Endereço: string
+  Cep: string
+  City: string
+  Bairro: string
+  Uf: string
+  Abertura: string
+  Fechamento: string
+  Telefone: string
+  Foto: string
+  UrlHospital: string
+  dutyUrl: string
+  IdDuty: string
+}
 export function HospitalPage({ route }) {
 
   const [isActive, setIsActive] = useState(false);
@@ -57,7 +72,26 @@ export function HospitalPage({ route }) {
 
   const [urlDuty, setUrlDuty] = useState('');
   const [urlDoctor, setUrlDoctor] = useState('');
-  const [urlHosp, setUrlHosp] = useState('');
+
+
+  const HospitalData: hospitalProps = {
+    DoctorJson: doctorJson,
+    IdDoctor: idDoctor,
+    Name: name,
+    Endereço: endereço,
+    Cep: cep,
+    City: city,
+    Bairro : bairro,
+    Uf : uf,
+    Abertura : abertura,
+    Fechamento : fechamento,
+    Telefone : telefone,
+    Foto : foto,
+    UrlHospital : urlHospital,
+    dutyUrl : DutyUrl,
+    IdDuty : idDuty,
+  }
+
 
   useEffect(() => {
 
@@ -73,19 +107,23 @@ export function HospitalPage({ route }) {
 
   }, [])
 
-  useEffect(() => {
+  async function handleFavActive() {
 
-    const dataHospital = urlHospital + foto
-    setUrlHosp(dataHospital)
+    if (isActive == false) {
+      setIsActive(true)
 
-  }, [])
+    }
+    else if (isActive == true) {
+      setIsActive(false)
 
-  function handleFavActive(type: true | false) {
-    setIsActive(type)
+    }
 
   }
 
   const navigation = useNavigation();
+
+
+
 
   return (
     <Container>
@@ -94,7 +132,7 @@ export function HospitalPage({ route }) {
 
         <Return
 
-          onPress={() => navigation.navigate('SearchOptions')}>
+          onPress={() => navigation.navigate('AllHospitals')}>
           <IconReturn name='arrowleft' />
         </Return>
 
@@ -116,9 +154,7 @@ export function HospitalPage({ route }) {
 
       <Search placeholder='Pesquise um plantão ou especialidade médica aqui' />
 
-      <HospitalPicture source={urlHosp ? {uri:urlHosp} : null} />
-
-
+      <HospitalPicture source={{ uri: urlHospital + foto }} />
 
 
       <HospitalInfo>

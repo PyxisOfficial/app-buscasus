@@ -35,7 +35,10 @@ export function Duty({route}) {
         uf,
         abertura,
         fechamento,
-        telefone,}  =  route.params;
+        telefone,
+         foto,
+        urlHospital,
+    }  =  route.params;
 
         
     const navigation = useNavigation();
@@ -99,6 +102,8 @@ export function Duty({route}) {
           abertura: abertura,
           fechamento: fechamento,
           telefone: telefone,
+          foto : foto,
+          urlHospital : urlHospital,
         })} />
             </Footer>
         </Container>

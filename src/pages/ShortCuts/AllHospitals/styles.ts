@@ -10,7 +10,7 @@ export const Search = styled.TextInput`
 
  background-color: ${(props) => props.theme.colors.White};
  margin: ${RFValue(-10)}px ${RFValue(0)}px;
- width:90% ;
+ width:100% ;
  height: ${RFPercentage(4)}px;
  border-radius: 20px;
  flex-direction: row;
@@ -25,8 +25,8 @@ align-self:center;
  padding-top: 3px;
 `
 export const SearchIcon = styled(MaterialIcons)`
-margin-left: ${RFValue(30)}px;
-margin-top:34%;
+margin-left: ${RFValue(15)}px;
+;
 font-size: ${RFValue(20)}px;
 color: ${(props) => props.theme.colors.GreenLight};
 z-index: 1;
@@ -34,12 +34,12 @@ position: absolute;
 
 `
 export const SearchContent = styled.View`
-width: 100%;
+width: 90%;
 flex-direction: row;
 align-items: center;
-justify-content: center;
 margin-top:${RFPercentage(17)}px;
 margin-bottom:${RFPercentage(5)}px;
+align-self: center;
 `
 export const HospitalSearch = styled.FlatList` 
 border-top-width: 1.5px;

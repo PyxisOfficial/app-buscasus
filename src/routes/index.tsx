@@ -9,12 +9,12 @@ import { useAuth } from '../hooks/auth';
 
 export function Routes(){
 
-    const {user} =  useAuth();
+    const {signed}=  useAuth();
 
     return(
 
         <NavigationContainer>
-            {user.id ? <AppRoutes/> && <DrawerRoutes/> : <AuthRoutes/>}
+            {signed ? <AppRoutes/> && <DrawerRoutes/> : <AuthRoutes/>}
         </NavigationContainer>
 
 

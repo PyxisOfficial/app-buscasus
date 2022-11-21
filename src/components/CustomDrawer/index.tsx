@@ -27,28 +27,14 @@ import { useNavigation } from '@react-navigation/native';
 
 export function CustomDrawer({ ...props }) {
 
-    const { user } = useAuth();
+    
     const navigation = useNavigation();
     return (
         <Container>
-            <Header>
-                <Profile>
-                    <IconButton onPress={() => navigation.navigate('Profile')}>
-                    <UserIcon source={{ uri: user.photo }} />
-                    </IconButton>
-                    <TextHeaderBox>
-                        <UserName>{user.name}</UserName>
-                    </TextHeaderBox>
-                </Profile>
-            </Header>
+           
 
             <DrawerItens>
-                <Profile>
-                    <IconDrawer name='person'/>
-                    <Title>Seu Perfil</Title>
-                </Profile>
-
-                <Settings>
+                            <Settings>
                     <IconDrawer name='gear'/>
                     <Title>Configurações</Title>
                 </Settings>

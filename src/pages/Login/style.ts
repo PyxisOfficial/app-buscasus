@@ -67,35 +67,25 @@ margin-left: -30px;
 
 export const LoginOptions = styled.View`
 
-flex-direction: row;
+width:50%;
 align-self: center;
 align-items: center;
-margin-top: ${RFPercentage(12)}px;
+margin-top: ${RFPercentage(10)}px;
 
 
  `;
-export const SingInGoogle = styled.TouchableOpacity`
-width: 35%;
-border-width: 1.5px;
-border-radius: 5px;
-  border-color: ${({theme}) => theme.colors.GreenLight};
-height: ${RFPercentage(7)}px;
-flex-direction: row;
-align-items: center;
-margin: ${RFValue(0)}px ${RFValue(10)}px;
-justify-content: center; 
 
- `;
 export const SingUp = styled.TouchableOpacity`
- width: 35%;;
+ width: 80%;;
   border-width: 1.5px;
   border-radius: 5px;
   border-color: ${({theme}) => theme.colors.GreenLight};
   height: ${RFPercentage(7)}px;
   flex-direction: row;
   align-items: center;
-margin: ${RFValue(0)}px ${RFValue(10)}px;
+margin: ${RFValue(10)}px ;
 justify-content: center;
+
  `;
 export const Icon = styled.Image`
 margin-right: ${RFValue(10)}px;

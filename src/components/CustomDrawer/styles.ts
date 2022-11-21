@@ -53,7 +53,7 @@ export const UserIcon = styled.Image`
     border-color: ${({ theme }) => theme.colors.MidGreen};
 `
 
-export const Profile = styled.View`
+export const Profile = styled.TouchableOpacity`
 
 flex-direction: row;
 align-items: center;
@@ -138,7 +138,7 @@ align-items: center;
  
  `
  export const DrawerItens = styled.View`
- margin:24px;
+ margin:60px  24px 24px;
  
  ` 
  export const IconDrawer = styled(Octicons)`

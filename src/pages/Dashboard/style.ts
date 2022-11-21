@@ -108,7 +108,7 @@ export const Search = styled.TouchableOpacity.attrs({
  border-radius: 20px;
  flex-direction: row;
  font-size:${RFValue(11)}px;
- padding: ${RFValue(2)}px  ${RFValue(45)}px ${RFValue(0)}px;
+ padding: ${RFValue(2)}px  ${RFValue(10)}px ${RFValue(0)}px;
  align-items:center;
 align-self:center;
  border-width: 1px;
@@ -116,12 +116,10 @@ align-self:center;
  
 `
 export const SearchIcon = styled(MaterialIcons)`
-margin-left: ${RFValue(30)}px;
-margin-top:30.5%;
+margin-right: ${RFValue(5)}px;
 font-size: ${RFValue(25)}px;
 color: ${(props) => props.theme.colors.GreenLight};
-z-index: 1;
-position: absolute;
+
 
 `
 

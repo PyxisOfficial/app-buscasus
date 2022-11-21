@@ -9,8 +9,7 @@ import { CustomDrawer } from '../components/CustomDrawer';
 
 import { Dashboard } from '../pages/Dashboard';
 import { SearchOptions } from '../pages/SearchOptions';
-import { Profile } from '../pages/Profile';
-import { HospitalPage } from '../pages/HospitalPage';
+import { HospitalPage } from '../pages/HospitalPage/';
 import { Doctors } from '../pages/modals/Doctors';
 import { Duty } from '../pages/modals/Duty';
 import { Recentes } from '../pages/profileScreens/Recentes';
@@ -29,8 +28,7 @@ export function DrawerRoutes() {
 
             >
             <Drawer.Screen name='Dashboard' component={Dashboard} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
-            <Drawer.Screen name='Profile' component={Profile} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
-            <Drawer.Screen name='Recentes' component={Recentes} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
+             <Drawer.Screen name='Recentes' component={Recentes} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='Configuracoes' component={Configuracoes} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='Favoritos' component={Favoritos} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='AllDoctors' component={AllDoctors} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />

@@ -17,10 +17,8 @@ import {
   HideButton,
   HideIcon,
   LoginOptions,
-  SingInGoogle,
-  SingUp,
-  Icon,
-  Title,
+    SingUp,
+    Title,
     
 
 } from './style';
@@ -39,7 +37,7 @@ interface FormData {
 
 const schema = Yup.object().shape({
 
-  Login: Yup
+  userName: Yup
     .string()
     .required('Informe o seu Email ou CPF'),
 
@@ -51,25 +49,11 @@ const schema = Yup.object().shape({
 export function Login() {
 
 
-  const { SignInWithGoogle } = useAuth();
+  const {signIn} : any = useAuth();
 
-  async function HandleSignInWithGoogle() {
-    
-    try{
-
-      await SignInWithGoogle();
-
-    }
-
-    catch(error){
-
-      console.log(error);
-      Alert.alert('Não Foi possivel conectar a uma conta Google')
-
-    }
-
-  }
-
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  
   const {
     formState: { errors },
     handleSubmit,
@@ -82,27 +66,10 @@ export function Login() {
 
   function handleRegister(form: FormData) {
 
-    reset()
-    const Data = {
-      Login: form.Login,
-      Password: form.Password,
-    }
-
-    if (form.Login == 'Adm' && form.Password == 123) {
-      return navigation.navigate("Profile")
-
-
-    }
-
-    else if (form.Login != 'Leandro@gmail.com' && form.Password == 123) {
-      return alert('Email errado ou CPF Inválido')
-    }
-
-
-    else {
-      return alert('Senha Errada')
-    }
-
+    setUserName(form.userName);
+    setPassword(form.PasssetPassword)
+  
+    signIn(userName, password)
   }
 
 
@@ -124,13 +91,13 @@ export function Login() {
           <InputBox>
             <InputImage name="person" />
             <InputForm
-              name="Login"
+              name="userName"
               control={control}
               placeholder='Email ou CPF'
               autoCapitalize='sentences'
               autoCorrect={false}
               keyboardType='email-address'
-              error={errors.Login && errors.Login.message}
+              error={errors.userName && errors.userName.message}
             />
           </InputBox>
 
@@ -159,7 +126,7 @@ export function Login() {
           </InputBox>
 
           <Button
-            Title='LOGIN'
+            Title='Login'
 
             onPress={handleSubmit(handleRegister)}
           />
@@ -167,18 +134,9 @@ export function Login() {
         </KeyboardAvoidingView>
 
         <LoginOptions>
-
-          <SingInGoogle onPress={HandleSignInWithGoogle}>
-
+       
           
-            <Icon source={require('../../assets/google.jpg')}/>
-          
-
-            <Title>
-              Entrar com {'\n'}Google
-               </Title>
-
-          </SingInGoogle>
+           
 
           <Title>ou</Title>
 

@@ -7,11 +7,12 @@ import {
   Container,
   Search,
   SearchIcon,
-  HospitalSearchRecommended,
-  RecommendedHospital,
+  HospitalList,
   HeaderRecommend,
   RecommendBox,
-  RecommendedHospitalView,
+  HospitalSearch,
+  Hospital,
+  HospitalView,
   HospitalIcon,
   HospitalName,
   HospitalAddress,
@@ -27,12 +28,24 @@ export function SearchOptions() {
 
   const navigation = useNavigation();
 
+  const [search, setSearch] = useState('')
   const [data, setData] = useState([]);
 
+  useEffect(() => {
+    axios.get(`http://192.168.15.45/buscaSus/api/area-admin/hospital//`)
+    .then((response) => { setData(response.data); })
+  }, []);
 
   useEffect(() => {
-  axios.get(`http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-admin/hospital//`).then((response)=> { setData(response.data);})
-  }, []);
+    axios.get(`http://192.168.15.45/buscaSus/api/area-admin/hospital//`,  {
+      params:{
+        search: search
+      }
+    }
+        
+    )
+    .then((response) => { setData(response.data); })
+  }, [search]);
 
   return (
     <>
@@ -45,22 +58,23 @@ export function SearchOptions() {
           </Return>
           <SearchIcon name="search" />
           <Input
+          onChangeText={setSearch} 
             placeholder='Pesquise um hospital ou especialidade'
           />
 
+        
           <Filter>
             <FilterIcon name='ios-filter' />
           </Filter>
-        </Search>
-        <RecommendBox>
-          <HeaderRecommend>Hospitais recomendados</HeaderRecommend>
-          
-            <HospitalSearchRecommended
+           </Search>
+
+                <HospitalList>
+              <HospitalSearch
               data={data}
               keyExtractor={({ idHospital }, index) => idHospital}
               renderItem={({ item }) => (
 
-                <RecommendedHospitalView
+                <HospitalView
                   onPress={() => navigation.navigate('HospitalPage',
                     {
 
@@ -73,28 +87,39 @@ export function SearchOptions() {
                       abertura: item.aberturaHospital,
                       fechamento: item.fechamentoHospital,
                       telefone: item.numTelefone,
-                      urlHospital:'http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-admin/img/',
+                      urlHospital:'http://192.168.15.45/buscaSus/api/area-admin/img/',
                       foto: item.fotoHospital,
-                      DutyUrl: 'http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-hospital/plantao/?idHospital=',
+                      DutyUrl: 'http://192.168.15.45/buscaSus/api/area-hospital/plantao/?idHospital=',
                       idDuty: item.idHospital,
-                      doctorJson: 'http://192.168.15.45/buscaSusWeb-main/buscaSusWeb-main/api/area-hospital/medico/?idHospital=',
+                      doctorJson: 'http://192.168.15.45/buscaSus/api/area-hospital/medico/?idHospital=',
                       idDoctor: item.idHospital,
                     })}
                 >
 
-                  <HospitalIcon name="hospital" />
-                  <RecommendedHospital>
+                  <HospitalIcon source={{uri:'http://192.168.15.45/buscaSus/api/area-admin/img/' + item.fotoHospital }}/>
+                  <Hospital>
 
                     <HospitalName>{item.nomeHospital}</HospitalName>
 
                     <HospitalAddress>{item.logradouroHospital}</HospitalAddress>
 
-                  </RecommendedHospital>
-                </RecommendedHospitalView>
+                  </Hospital>
+                </HospitalView>
               )}
             />
+            </HospitalList>
+       
+
+
+
+        <RecommendBox>
+          <HeaderRecommend>Pesquisas recentes</HeaderRecommend>
+          
+            
+            
           
         </RecommendBox>
+        
       </Container>
 
       <TabBar/>

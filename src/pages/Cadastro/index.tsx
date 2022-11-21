@@ -28,12 +28,12 @@ import { InputForm } from '../../components/InputForm';
 
 import { useForm } from 'react-hook-form';
 
-
-
-interface FormData {
+interface FormProps {
   [name: string]: any;
 
 }
+
+
 
 const schema = Yup.object().shape({
 
@@ -87,56 +87,27 @@ export function Cadastro() {
   }, [])
 
 
+
+
   const navigation = useNavigation();
 
-  async function handleRegister(form: FormData) {
+  async function handleRegister(form: FormProps) {
 
-    const SingUpForm = {
-      name: form.name,
-      CPF: cpf.format(form.CPF),
-      Email: form.Email,
-      Password: form.Password,
-      ConfPassword: form.ConfPassword,
-    }
+    const formData = new FormData();
+    formData.append('nomeUsuario', form.name);
+    formData.append('emailUsuario', form.Email);
+    formData.append('senhaUsuario', form.Password);
+    formData.append('cpfUsuario', cpf.format(form.CPF))
 
-    try {
-
-      const data = await AsyncStorage.getItem(UserData);
-      const currentData = data ? JSON.parse(data) : [];
-
-      const dataFormatted = {
-
-        ...currentData,
-        SingUpForm
-
-      };
-
- 
+    await axios.post('http://192.168.15.45/buscaSus/api/area-usuario/usuario/', formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        }
+      });
 
 
-      await AsyncStorage.setItem(UserData, JSON.stringify(dataFormatted));
-    } catch (error) {
-      console.log(error);
-      Alert.alert('Não foi possível cadastrar')
-    }
 
-    if(form.ConfPassword == form.Password && cpf.isValid(form.CPF) &&  form.name != '' && form.email != '' && form.Password != ''){
-      return navigation.navigate('Login')
-    }
-    
-    if (form.ConfPassword != form.Password) {
-      return alert('Senhas diferentes, tente novamente.')
-    }
-
-    if (cpf.isValid(form.CPF)) {
-      return ((console.log(SingUpForm)) )
-    }
-    else {
-      return (alert('informe um CPF válido'))
-    }
-
-    
-   
   }
 
   const [hidePassword, setHidePassword] = useState(true)
@@ -147,7 +118,7 @@ export function Cadastro() {
         <KeyboardAvoidingView behavior="position" enabled>
 
           <LogoBox>
-            <Logo height={120} width={120}/>
+            <Logo height={120} width={120} />
             <ProjectName>BuscaSUS</ProjectName>
           </LogoBox>
           <InputBox>
@@ -251,6 +222,7 @@ export function Cadastro() {
 
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import axios from 'axios';
 
 const Stack = createNativeStackNavigator();
 

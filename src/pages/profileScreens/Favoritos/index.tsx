@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
     Container,
@@ -16,6 +17,8 @@ import {
     HospitalName,
     HospitalAddress,
 } from './styles';
+import { DrawerItem } from '@react-navigation/drawer';
+
 export function Favoritos() {
 
 
@@ -24,24 +27,17 @@ export function Favoritos() {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
 
-    const getHospital = async () => {
-        try {
-            const response = await fetch('http://192.168.15.45/buscaSusWeb2-main/buscaSusWeb2-main//assets/json/json-hospital.php');
+    async function GetHospital() {
 
-            const json = await response.json();
-            setData(json.hospitais);
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-        }
+        const HpData = '@BuscaSus:Favoritos'
+
+        const HospitalData: any = await AsyncStorage.getItem(HpData)
+        setData(HospitalData)
     }
 
     useEffect(() => {
-        getHospital();
-    }, []);
-
-
+        GetHospital();
+    }, [])
 
     return (
         <Container>
@@ -61,22 +57,21 @@ export function Favoritos() {
             {isLoading ? <ActivityIndicator /> : (
                 <FavList
                     data={data}
-                    keyExtractor={({ idHospital }, index) => idHospital}
                     renderItem={({ item }) => (
 
                         <HospitalView
                             onPress={() => navigation.navigate('HospitalPage',
                                 {
 
-                                    name: item.nomeHospital,
-                                    endereço: item.logradouroHospital,
-                                    cep: item.cepHospital,
-                                    city: item.cidadeHospital,
-                                    bairro: item.bairroHospital,
-                                    uf: item.ufHospital,
-                                    abertura: item.aberturaHospital,
-                                    fechamento: item.fechamentoHospital,
-                                    telefone: item.numTelefone
+                                    name: item.name,
+                                    endereço: item.endereço,
+                                    cep: item.cep,
+                                    city: item.city,
+                                    bairro: item.bairro,
+                                    uf: item.uf,
+                                    abertura: item.abertura,
+                                    fechamento: item.fechamento,
+                                    telefone: item.telefone,
 
                                 })}
                         >
@@ -84,9 +79,9 @@ export function Favoritos() {
                             <HospitalIcon name="hospital" />
                             <Hospitals>
 
-                                <HospitalName>{item.nomeHospital}</HospitalName>
+                                <HospitalName>{item.name}</HospitalName>
 
-                                <HospitalAddress>{item.logradouroHospital}</HospitalAddress>
+                                <HospitalAddress>{item.endereço}</HospitalAddress>
 
                             </Hospitals>
                         </HospitalView>
