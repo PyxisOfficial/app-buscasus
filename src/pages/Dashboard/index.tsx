@@ -96,7 +96,7 @@ export function Dashboard() {
 
           <ShortCutHospital>
 
-            <NearbyHospitals>
+            <NearbyHospitals onPress={() => navigation.navigate('NearbyHospitals')}>
               <PatternText>Hospitais Próximos</PatternText>
               
             </NearbyHospitals>

@@ -163,7 +163,7 @@ flex:.9;
 
 export const HospitalList = styled.View`
 
-flex:0.8;
+flex:1;
 
 height: 100px;
 `

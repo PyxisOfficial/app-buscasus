@@ -17,18 +17,8 @@ import {
     Footer
 } from './styles';
 import { Button } from '../../../components/Button';
-import { string } from 'yup';
 
-
-interface props  {
-  closeModal: () => void
-}
-
-interface FotoProps{
-  fotoMedico: string
-}
-
-export function Doctors({route}, {closeModal}: props) {
+export function Doctors({route}) {
 
   const {
     urlDoctor,

@@ -38,6 +38,7 @@ export function Duty({route}) {
         telefone,
          foto,
         urlHospital,
+        idHospital
     }  =  route.params;
 
         
@@ -46,7 +47,14 @@ export function Duty({route}) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get(urlDuty).then((response)=> { setData(response.data);})
+        axios.get('http://192.168.15.45/buscaSus/api/area-hospital/plantao/', 
+        {
+            params: {
+            todayDuty: true,
+            idHospital: idHospital
+            }
+        }
+        ).then((response)=> { setData(response.data);})
         }, []);
 
     return (
