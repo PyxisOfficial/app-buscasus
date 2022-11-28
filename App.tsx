@@ -5,9 +5,7 @@ import { Routes } from './src/routes/index';
 
 import AppLoading from 'expo-app-loading';
 import { useFonts, Poppins_300Light, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import { AuthProvider } from './src/hooks/auth';
 
-import { useAuth } from './src/hooks/auth';
 //--------------------------------------------------
 
 import Theme from './src/pages/global/styles/Theme';
@@ -20,7 +18,7 @@ import Theme from './src/pages/global/styles/Theme';
 
 export default function App() {
 
-  const {isLoading} = useAuth();
+
   const [FontsLoaded] = useFonts({
 
       Poppins_300Light,
@@ -29,19 +27,17 @@ export default function App() {
 
   })
   
-  if (!FontsLoaded || isLoading){
+  if (!FontsLoaded){
     return <AppLoading />
   }
   
   return (
   
     <ThemeProvider theme={Theme} >
-
-        <AuthProvider>
+       
          <Routes/>
-        </AuthProvider>
-  
-     </ThemeProvider>
+        
+       </ThemeProvider>
  
   );
 }

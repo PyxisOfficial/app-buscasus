@@ -31,13 +31,13 @@ import {
 
 } from './style';
 import { Logo } from '../../components/Logo';
-import { useAuth } from '../../hooks/auth';
+
 
 
 
 export function Dashboard() {
 
-  const { signOut } : any = useAuth();
+ 
   const navigation = useNavigation();
 
   const [grettings, setGrettings] = useState('');
@@ -65,8 +65,20 @@ export function Dashboard() {
     <>
       <Header>
       
+     
+        <Profile>
 
-      <Logout onPress={signOut}>
+         
+          <TextHeaderBox>
+
+            <AutoMessage>{grettings}</AutoMessage>
+            <UserName>Leandro</UserName>
+
+          </TextHeaderBox>
+        </Profile>
+        
+      
+      <Logout onPress={() => navigation.navigate('Login')}>
         <LogoutTitle>Sair</LogoutTitle>
       </Logout>
 

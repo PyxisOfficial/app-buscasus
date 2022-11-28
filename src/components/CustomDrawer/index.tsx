@@ -9,8 +9,8 @@ import {
     Settings,
     Help,
     Title,
-    IconDrawer, 
-    DrawerItens, 
+    IconDrawer,
+    DrawerItens,
     OthersFunctionalities,
     Favorites,
     IconView,
@@ -21,32 +21,40 @@ import {
 } from './styles';
 
 
-import { useAuth } from '../../hooks/auth';
 import { useNavigation } from '@react-navigation/native';
+import { Logo } from '../Logo';
 
 
 export function CustomDrawer({ ...props }) {
 
-    
+
     const navigation = useNavigation();
     return (
         <Container>
-           
 
+            <Header>
+                <Profile>
+                    <Logo height={40} width={40}/>
+                    <TextHeaderBox>
+                        <UserName>BuscaSus</UserName>
+                    </TextHeaderBox>
+                </Profile>
+
+            </Header>
             <DrawerItens>
-                            <Settings>
-                    <IconDrawer name='gear'/>
+                <Settings>
+                    <IconDrawer name='gear' />
                     <Title>Configurações</Title>
                 </Settings>
 
                 <Help>
-                    <IconDrawer name='question'/>
+                    <IconDrawer name='question' />
                     <Title>Ajuda</Title>
                 </Help>
 
             </DrawerItens>
 
-            
+
             <OthersFunctionalities>
 
                 <Favorites onPress={() => navigation.navigate('Favoritos')}>

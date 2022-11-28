@@ -30,8 +30,8 @@ export const ProfileUserIcon = styled.TouchableOpacity.attrs({
     border-radius: 20px;
     `
 export const UserName = styled.Text`
-   
-    font-size: 15px;
+    margin-top: 4px;
+    font-size: 20px;
     color:${(props) => props.theme.colors.MidGreen} ;
     font-family: ${(props) => props.theme.Fonts.Bold};
   
@@ -138,7 +138,7 @@ align-items: center;
  
  `
  export const DrawerItens = styled.View`
- margin:60px  24px 24px;
+ margin:20px  24px 24px;
  
  ` 
  export const IconDrawer = styled(Octicons)`

@@ -19,16 +19,19 @@ import { AllDoctors } from '../pages/ShortCuts/AllDoctors';
 import { AllHospitals } from '../pages/ShortCuts/AllHospitals';
 import { NearbyHospitals } from '../pages/ShortCuts/NearbyHospitals';
 import { Specialtys } from '../pages/ShortCuts/Specialtys';
+import { Cadastro } from '../pages/Cadastro';
+import { Login } from '../pages/Login';
 
 export function DrawerRoutes() {
     return (
 
         <Drawer.Navigator
             drawerContent={CustomDrawer}
-
-            >
+        >
+            <Drawer.Screen name='Login' component={Login} options={{ headerShown: false }} />
+            <Drawer.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
             <Drawer.Screen name='Dashboard' component={Dashboard} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
-             <Drawer.Screen name='Recentes' component={Recentes} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
+            <Drawer.Screen name='Recentes' component={Recentes} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='Configuracoes' component={Configuracoes} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='Favoritos' component={Favoritos} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='AllDoctors' component={AllDoctors} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />

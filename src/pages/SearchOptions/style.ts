@@ -10,7 +10,7 @@ export const Container = styled.View`
 
 export const Search = styled.View`
  flex-direction: row; 
- margin: ${RFValue(40)}px ${RFValue(20)}px ${RFValue(0)}px;
+ margin: ${RFValue(70)}px ${RFValue(20)}px ${RFValue(0)}px;
  height: ${RFValue(33)}px;
  justify-content: space-between;
  align-items: center;
@@ -70,7 +70,7 @@ export const HeaderRecommend = styled.Text`
 export const RecommendBox = styled.View`
 
 flex:1;
-padding: 25px;
+padding: 10px 24px;
 
 `
 export const RecommendedHospitalView = styled.TouchableOpacity.attrs({

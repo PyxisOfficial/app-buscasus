@@ -17,13 +17,16 @@ import { AllDoctors } from '../pages/ShortCuts/AllDoctors';
 import { AllHospitals } from '../pages/ShortCuts/AllHospitals';
 import { NearbyHospitals } from '../pages/ShortCuts/NearbyHospitals';
 import { Specialtys } from '../pages/ShortCuts/Specialtys';
+import { Cadastro } from '../pages/Cadastro';
+import { Login } from '../pages/Login';
 
 const Stack = createNativeStackNavigator();
 
 export function AppRoutes() {
   return (
-    <Stack.Navigator initialRouteName='Dashboard'>
-
+    <Stack.Navigator initialRouteName='Login'>
+      <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+      <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
       <Stack.Screen name='Dashboard' component={Dashboard} options={{ headerShown: false }} />
       <Stack.Screen name='SearchOptions' component={SearchOptions} options={{ headerShown: false }} />
       <Stack.Screen name='HospitalPage' component={HospitalPage} options={{ headerShown: false }} />

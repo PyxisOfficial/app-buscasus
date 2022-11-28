@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { cpf } from 'cpf-cnpj-validator';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 
 import {
   Container,
@@ -69,26 +70,7 @@ export function Cadastro() {
     resolver: yupResolver(schema)
   })
 
-  const UserData = "@BuscaSus:Cadastro";
-
-  useEffect(() => {
-
-    async function loadData() {
-      const data = await AsyncStorage.getItem(UserData);
-      console.log(JSON.parse(data!))
-    }
-
-    loadData();
-
-    /* async function remove() {
-     await AsyncStorage.removeItem(UserData)
-   }
-   remove();*/
-  }, [])
-
-
-
-
+ 
   const navigation = useNavigation();
 
   async function handleRegister(form: FormProps) {
@@ -99,16 +81,25 @@ export function Cadastro() {
     formData.append('senhaUsuario', form.Password);
     formData.append('cpfUsuario', cpf.format(form.CPF))
 
+    if(form.ConfPassword == form.Password && cpf.isValid(form.CPF) &&  form.name != '' && form.email != '' && form.Password != ''){
     await axios.post('http://192.168.15.45/buscaSus/api/area-usuario/usuario/', formData,
       {
         headers: {
           'Content-Type': 'multipart/form-data',
         }
       });
-
-
+      Alert.alert(
+        'Tudo certo!',
+         "Cadastro realizado com sucesso",
+         [
+          {
+            text: 'Ok',
+            onPress: () => navigation.navigate('Login')
+          }
+         ])
 
   }
+}
 
   const [hidePassword, setHidePassword] = useState(true)
   const [hideConfPassword, setHideConfPassword] = useState(true)
@@ -219,22 +210,3 @@ export function Cadastro() {
   );
 }
 
-
-
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import axios from 'axios';
-
-const Stack = createNativeStackNavigator();
-
-function NavigationCadastro() {
-
-  return (
-
-
-    <Stack.Navigator>
-      <Stack.Screen name='Login' component={Login} />
-      <Stack.Screen name='Cadastro' component={Cadastro} />
-    </Stack.Navigator>
-
-  )
-}

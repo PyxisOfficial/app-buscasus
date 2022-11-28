@@ -26,7 +26,7 @@ import {
 import { Logo } from '../../components/Logo';
 import { Button } from '../../components/Button';
 import { InputForm } from '../../components/InputForm';
-import { useAuth } from '../../hooks/auth'
+
 
 
 
@@ -37,7 +37,7 @@ interface FormData {
 
 const schema = Yup.object().shape({
 
-  userName: Yup
+  Login: Yup
     .string()
     .required('Informe o seu Email ou CPF'),
 
@@ -48,12 +48,6 @@ const schema = Yup.object().shape({
 
 export function Login() {
 
-
-  const {signIn} : any = useAuth();
-
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  
   const {
     formState: { errors },
     handleSubmit,
@@ -66,10 +60,27 @@ export function Login() {
 
   function handleRegister(form: FormData) {
 
-    setUserName(form.userName);
-    setPassword(form.PasssetPassword)
-  
-    signIn(userName, password)
+    reset()
+    const Data = {
+      Login: form.Login,
+      Password: form.Password,
+    }
+
+    if (form.Login == 'LeandroCoelho@gmail.com' && form.Password == 12345678) {
+      return navigation.navigate("Dashboard")
+
+
+    }
+
+    else if (form.Login != 'LeandroCoelho@gmail.com' && form.Password == 12345678) {
+      return alert('Email errado ou CPF Inválido')
+    }
+
+
+    else {
+      return alert('Senha Errada')
+    }
+
   }
 
 
@@ -91,7 +102,7 @@ export function Login() {
           <InputBox>
             <InputImage name="person" />
             <InputForm
-              name="userName"
+              name="Login"
               control={control}
               placeholder='Email ou CPF'
               autoCapitalize='sentences'
@@ -134,11 +145,8 @@ export function Login() {
         </KeyboardAvoidingView>
 
         <LoginOptions>
-       
-          
-           
-
-          <Title>ou</Title>
+               
+             <Title>Não tem uma conta?</Title>
 
           <SingUp onPress={() => navigation.navigate('Cadastro')}>
                     <Title>Cadastre-se</Title>
