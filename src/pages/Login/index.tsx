@@ -110,7 +110,7 @@ export function Login() {
               autoCapitalize='sentences'
               autoCorrect={false}
               keyboardType='email-address'
-              error={errors.userName && errors.userName.message}
+              error={errors.Login && errors.Login.message}
             />
           </InputBox>
 

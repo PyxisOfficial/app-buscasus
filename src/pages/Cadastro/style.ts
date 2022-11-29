@@ -36,10 +36,6 @@ export const InputBox = styled.View`
 padding-top: 10px;
 flex-direction: row;
 align-self: center;
-border-width: 2px;
-border-radius:5px;
-border-bottom-color:${(props) => props.theme.colors.DarkGreen} ;
-border-color:  ${(props) => props.theme.colors.BACKGROUND};
 
 
 `
