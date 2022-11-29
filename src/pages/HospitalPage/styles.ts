@@ -140,7 +140,9 @@ export const Filds = styled.View`
  
  flex-direction: row;
  align-items: center;
- justify-content: center;
+ justify-content: space-between;
+ padding: 0px 20px;
+ 
   
  `
  export const DutyButton = styled.TouchableOpacity.attrs({
@@ -148,32 +150,32 @@ export const Filds = styled.View`
   activeOpacity: .7
  })`
  
- width: 45%;
+ width: 30%;
 height: ${RFPercentage(5)}px;
-border-radius: 20px;
-border-width:1px;
+border-radius: 5px;
+border-width:1.5px;
 border-color: ${(props) => props.theme.colors.MidGreen};
 align-self: center;
 align-items: center ;
 margin-top: ${RFValue(20)}px;
 padding: ${RFValue(5)}px;
 justify-content: center;
-margin-right: ${RFValue(5)}px;
+
  `
  export const DoctorsButton = styled.TouchableOpacity.attrs({
 
   activeOpacity: .7
  })`
  
- width: 45%;
+ width: 30%;
 height: ${RFPercentage(5)}px;
-border-radius: 20px;
-border-width:1px;
+border-radius: 5px;
+border-width:1.5px;
 border-color: ${(props) => props.theme.colors.MidGreen};
 align-self: center;
 align-items: center ;
 margin-top: ${RFValue(20)}px;
-margin-left: ${RFValue(5)}px;
+
 padding: ${RFValue(5)}px;
 justify-content: center;
  `
@@ -184,3 +186,25 @@ color: ${(props) => props.theme.colors.MidGreen};
 font-family: ${(props) => props.theme.Fonts.Medium} ;
 `
 
+export const Complaint = styled.TouchableOpacity.attrs({
+
+  activeOpacity: .7
+ })`
+ 
+ width: 30%;
+height: ${RFPercentage(5)}px;
+border-radius: 5px;
+border-width:1.5px;
+border-color: ${(props) => props.theme.colors.Attention};
+align-self: center;
+align-items: center ;
+margin-top: ${RFValue(20)}px;
+
+padding: ${RFValue(5)}px;
+justify-content: center;
+ `
+export const TitleButtonComplaint = styled.Text`
+font-size: ${RFValue(11)}px;
+color: ${(props) => props.theme.colors.Attention};
+font-family: ${(props) => props.theme.Fonts.Medium} ;
+`

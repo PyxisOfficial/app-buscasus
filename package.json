@@ -33,6 +33,7 @@
     "react-hook-form": "^7.36.1",
     "react-native": "0.69.6",
     "react-native-drop-shadow": "^0.0.6",
+    "react-native-dropdown-select-list": "^2.0.2",
     "react-native-geocoding": "^0.5.0",
     "react-native-geolocation-service": "^5.3.1",
     "react-native-gesture-handler": "~2.5.0",

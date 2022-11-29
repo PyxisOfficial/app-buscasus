@@ -53,7 +53,7 @@ export function SearchOptions() {
         <Search>
           <Return
 
-            onPress={() => navigation.goBack()}>
+            onPress={() => navigation.navigate('Dashboard')}>
             <IconReturn name='arrowleft' />
           </Return>
           <SearchIcon name="search" />
@@ -89,11 +89,8 @@ export function SearchOptions() {
                       telefone: item.numTelefone,
                       urlHospital:'http://192.168.15.45/buscaSus/api/area-admin/img/',
                       foto: item.fotoHospital,
-                      DutyUrl: 'http://192.168.15.45/buscaSus/api/area-hospital/plantao/?idHospital=',
-                      idDuty: item.idHospital,
-                      doctorJson: 'http://192.168.15.45/buscaSus/api/area-hospital/medico/?idHospital=',
-                      idDoctor: item.idHospital,
-                    })}
+                      idHospital: item.idHospital,          
+             })}
                 >
 
                   <HospitalIcon source={{uri:'http://192.168.15.45/buscaSus/api/area-admin/img/' + item.fotoHospital }}/>

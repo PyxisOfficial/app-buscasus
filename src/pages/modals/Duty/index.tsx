@@ -26,7 +26,6 @@ export function Duty({route}) {
 
 
     const {
-        urlDuty,
         name,
         endereço,
         cep,

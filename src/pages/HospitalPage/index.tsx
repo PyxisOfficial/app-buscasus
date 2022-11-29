@@ -26,17 +26,17 @@ import {
   TitleButton,
   Favorite,
   FavIcon,
+  Complaint,
+  TitleButtonComplaint,
 } from './styles';
 import { Button } from '../../components/Button';
-import { useEvent } from 'react-native-reanimated';
+
 
 export function HospitalPage({ route }) {
 
   const [isActive, setIsActive] = useState(false);
 
   const {
-    doctorJson,
-    idDoctor,
     name,
     endereço,
     cep,
@@ -48,27 +48,8 @@ export function HospitalPage({ route }) {
     telefone,
     foto,
     urlHospital,
-    DutyUrl,
-    idDuty,
+    idHospital,
   } = route.params;
-
-  const [urlDuty, setUrlDuty] = useState('');
-  const [urlDoctor, setUrlDoctor] = useState('');
-
-
-  useEffect(() => {
-
-    const data = doctorJson + idDoctor
-    setUrlDoctor(data)
-
-  }, [])
-
-  useEffect(() => {
-
-    const dataDuty = DutyUrl + idDuty
-    setUrlDuty(dataDuty)
-
-  }, [])
 
   async function handleFavActive() {
 
@@ -115,7 +96,7 @@ export function HospitalPage({ route }) {
 
       </Header>
 
-      
+
       <HospitalPicture source={{ uri: urlHospital + foto }} />
 
 
@@ -158,7 +139,6 @@ export function HospitalPage({ route }) {
         <Services>
 
           <DutyButton onPress={() => navigation.navigate('Duty', {
-            urlDuty: urlDuty,
             name: name,
             endereço: endereço,
             cep: cep,
@@ -170,13 +150,13 @@ export function HospitalPage({ route }) {
             telefone: telefone,
             foto: foto,
             urlHospital: urlHospital,
-            idHospital: idDuty
+            idHospital: idHospital,
           })}>
             <TitleButton>Ver Plantões</TitleButton>
           </DutyButton>
 
           <DoctorsButton onPress={() => navigation.navigate('Doctors', {
-            urlDoctor: urlDoctor,
+            idHospital: idHospital,
             name: name,
             endereço: endereço,
             cep: cep,
@@ -192,6 +172,22 @@ export function HospitalPage({ route }) {
             <TitleButton>Ver Médicos</TitleButton>
           </DoctorsButton>
 
+          <Complaint onPress={() => navigation.navigate('ComplaintArea', {
+            name: name,
+            endereço: endereço,
+            cep: cep,
+            city: city,
+            bairro: bairro,
+            uf: uf,
+            abertura: abertura,
+            fechamento: fechamento,
+            telefone: telefone,
+            foto: foto,
+            urlHospital: urlHospital,
+            idHospital: idHospital,
+          })}>
+            <TitleButtonComplaint>Reclame Aqui</TitleButtonComplaint>
+          </Complaint>
 
         </Services>
 

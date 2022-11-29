@@ -76,9 +76,9 @@ margin-top: ${RFPercentage(10)}px;
  `;
 
 export const SingUp = styled.TouchableOpacity`
- width: 80%;;
+ width: 100%;
   border-width: 1.5px;
-  border-radius: 5px;
+  border-radius: 10px;
   border-color: ${({theme}) => theme.colors.GreenLight};
   height: ${RFPercentage(7)}px;
   flex-direction: row;
@@ -91,6 +91,7 @@ export const Icon = styled.Image`
 margin-right: ${RFValue(10)}px;
  `;
 export const Title = styled.Text`
+margin-top: 5px;
   text-align: center;
   font-size: 10px;
 font-family: ${(props) => props.theme.Fonts.Medium};

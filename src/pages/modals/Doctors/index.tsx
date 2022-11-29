@@ -21,7 +21,6 @@ import { Button } from '../../../components/Button';
 export function Doctors({route}) {
 
   const {
-    urlDoctor,
     name,
     endereço,
     cep,
@@ -32,13 +31,20 @@ export function Doctors({route}) {
     fechamento,
     telefone,
     foto,
-    urlHospital,}  =  route.params;
+    urlHospital,
+    idHospital,
+  }  =  route.params;
 
     const navigation = useNavigation();
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get(urlDoctor).then((response)=> { setData(response.data);})
+        axios.get('http://192.168.15.45/buscaSus/api/area-hospital/medico/', 
+        {
+            params: {
+            idHospital: idHospital
+            }
+        }).then((response)=> { setData(response.data);})
         }, []);
 
 
