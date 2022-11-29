@@ -19,7 +19,7 @@ justify-content: center;
 
 `
 export const TextButton = styled.Text`
-font-size: ${RFPercentage(2.2)}px;
+font-size: ${RFPercentage(2)}px;
 color: ${(props) => props.theme.colors.White};
 font-family: ${(props) => props.theme.Fonts.Medium} ;
 

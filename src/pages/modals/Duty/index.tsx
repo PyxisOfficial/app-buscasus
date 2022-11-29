@@ -46,7 +46,7 @@ export function Duty({route}) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://192.168.15.45/buscaSus/api/area-hospital/plantao/', 
+        axios.get('http://192.168.56.1:8080/buscaSus/api/area-hospital/plantao/', 
         {
             params: {
             todayDuty: true,

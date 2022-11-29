@@ -8,7 +8,7 @@ interface Props extends TextInputProps {
   control: Control;
   name: string;
   error: any
-
+  
 }
 
 export function InputForm({

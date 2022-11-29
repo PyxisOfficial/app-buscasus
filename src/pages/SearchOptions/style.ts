@@ -138,8 +138,8 @@ export const HospitalIcon = styled.Image`
 `
 export const HospitalName = styled.Text`
 
-font-family: ${(props) => props.theme.Fonts.Medium} ;
-font-size: ${RFValue(9.5)}px;
+font-family: ${(props) => props.theme.Fonts.SemiBold} ;
+font-size: ${RFValue(10)}px;
 color: ${(props) => props.theme.colors.MidGray};
 padding-left: ${RFValue(10)}px;
 margin-Bottom:-5px;

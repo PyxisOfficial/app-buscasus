@@ -41,7 +41,7 @@ align-self: center;
 export const Onda = styled.Image`
 flex: 1;
 width: 100%;
-margin-top: ${RFPercentage(10)}px;
+margin-top: ${RFPercentage(5)}px;
 
 `
 export const LogoBox = styled.View`

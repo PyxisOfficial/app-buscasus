@@ -68,18 +68,21 @@ export function Login() {
     }
 
     if (form.Login == 'LeandroCoelho@gmail.com' && form.Password == 12345678) {
-      return navigation.navigate("Dashboard")
+      return (
+        navigation.navigate("Dashboard"),
+        setHidePassword(true)
+        )
 
 
     }
 
     else if (form.Login != 'LeandroCoelho@gmail.com'  && form.Password == 12345678) {
-      return Alert.alert('Erro ao realizar o Login' , 'Email errado ou CPF Inválido')
+      return Alert.alert('Erro ao realizar o Login' , 'Email errado ou CPF Inválido');
     }
 
 
     else {
-      return Alert.alert('Erro ao realizar o Login', 'Senha Errada')
+      return Alert.alert('Erro ao realizar o Login', 'Senha Errada');
     }
 
   }

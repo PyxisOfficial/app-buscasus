@@ -27,13 +27,13 @@ export function AllDoctors() {
   const [data, setData] = useState([]);
   
   useEffect(() => {
-    axios.get('http://192.168.15.45/buscaSus/api/area-hospital/medico/')
+    axios.get('http://192.168.56.1:8080/buscaSus/api/area-hospital/medico/')
       .then((response) => { setData(response.data); })
   }, []);
 
   useEffect(() => {
 
-    axios.get('http://192.168.15.45/buscaSus/api/area-hospital/medico/',{
+    axios.get('http://192.168.56.1:8080/buscaSus/api/area-hospital/medico/',{
     
     params: {
       generalSearch: search,
