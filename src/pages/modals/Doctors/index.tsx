@@ -44,7 +44,8 @@ export function Doctors({route}) {
             params: {
             idHospital: idHospital
             }
-        }).then((response)=> { setData(response.data);})
+        }
+        ).then((response)=> { setData(response.data);})
         }, []);
 
 

@@ -91,9 +91,20 @@ export const Icon = styled.Image`
 margin-right: ${RFValue(10)}px;
  `;
 export const Title = styled.Text`
-margin-top: 5px;
+margin: ${RFValue(5)}px ;
   text-align: center;
-  font-size: 10px;
-font-family: ${(props) => props.theme.Fonts.Medium};
+  font-size: 12px;
+font-family: ${(props) => props.theme.Fonts.Regular};
   
  `;
+ export const TitleButton = styled.Text`
+
+ text-align: center;
+ font-size: 12px;
+font-family: ${(props) => props.theme.Fonts.Medium};
+ 
+`;
+
+export const InputContent = styled.View`
+margin-bottom: 20px;
+`;

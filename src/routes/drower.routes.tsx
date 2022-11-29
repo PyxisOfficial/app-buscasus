@@ -22,7 +22,7 @@ import { Specialtys } from '../pages/ShortCuts/Specialtys';
 import { Cadastro } from '../pages/Cadastro';
 import { Login } from '../pages/Login';
 import { ComplaintArea } from '../pages/ComplaintArea';
-
+import { MapScreen } from '../pages/MapScreen';
 
 export function DrawerRoutes() {
     return (
@@ -44,7 +44,8 @@ export function DrawerRoutes() {
             <Drawer.Screen name='HospitalPage' component={HospitalPage} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='Doctors' component={Doctors} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='Duty' component={Duty} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
-            <Drawer.Screen name='ComplaintArea' component={ComplaintArea} options={{ headerShown: false }} />
+            <Drawer.Screen name='ComplaintArea' component={ComplaintArea} options={{ headerShown: false , drawerItemStyle: { height: 0 } }} />
+            <Drawer.Screen name='MapScreen' component={MapScreen} options={{ headerShown: false , drawerItemStyle: { height: 0 } }} />
         </Drawer.Navigator>
 
     );

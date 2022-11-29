@@ -39,7 +39,7 @@ const schema = Yup.object().shape({
 
 
 export function ComplaintArea({ route }: any) {
-
+    const navigation = useNavigation()
     const {
         formState: { errors },
         handleSubmit,
@@ -64,19 +64,16 @@ export function ComplaintArea({ route }: any) {
         urlHospital,
         idHospital,
     } = route.params;
-
-    const navigation = useNavigation();
+ 
 
     const [selected, setSelected] = useState('');
 
     const data = [
-        { key: '1', value: 'Mobiles', disabled: true },
-        { key: '2', value: 'Appliances' },
-        { key: '3', value: 'Cameras' },
-        { key: '4', value: 'Computers', disabled: true },
-        { key: '5', value: 'Vegetables' },
-        { key: '6', value: 'Diary Products' },
-        { key: '7', value: 'Drinks' },
+        { key: '1', value: 'Exemplo 1' },
+        { key: '2', value: 'Exemplo 2' },
+        { key: '3', value: 'Exemplo 3' },
+        { key: '4', value: 'Exemplo 4' },
+     
     ]
 
     async function handleSubmitComplaint(form: FormData) {

@@ -19,7 +19,7 @@ import {
   Text,
 } from './styles';
 
-const { width, height } = Dimensions.get('screen');
+
 
 export function NearbyHospitals() {
 
@@ -78,7 +78,7 @@ export function NearbyHospitals() {
         />
         <Text>Ver Mapa</Text>
         <MapView>
-          <GoToMap>
+          <GoToMap onPress={() => navigation.navigate('MapScreen')}>
             <Map height={150} width={300} />
           </GoToMap>
         </MapView>

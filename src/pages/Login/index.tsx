@@ -17,9 +17,10 @@ import {
   HideButton,
   HideIcon,
   LoginOptions,
-    SingUp,
-    Title,
-    
+  SingUp,
+  Title,
+  InputContent,
+  TitleButton, 
 
 } from './style';
 
@@ -99,6 +100,7 @@ export function Login() {
 
           </LogoBox>
 
+          <InputContent>
           <InputBox>
             <InputImage name="person" />
             <InputForm
@@ -135,7 +137,7 @@ export function Login() {
             </HideButton>
 
           </InputBox>
-
+          </InputContent>
           <Button
             Title='Login'
 
@@ -149,7 +151,7 @@ export function Login() {
              <Title>Não tem uma conta?</Title>
 
           <SingUp onPress={() => navigation.navigate('Cadastro')}>
-                    <Title>Cadastre-se</Title>
+                    <TitleButton>Cadastre-se</TitleButton>
           </SingUp>
 
         </LoginOptions>

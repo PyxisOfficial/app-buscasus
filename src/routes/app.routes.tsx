@@ -20,6 +20,7 @@ import { Specialtys } from '../pages/ShortCuts/Specialtys';
 import { Cadastro } from '../pages/Cadastro';
 import { Login } from '../pages/Login';
 import { ComplaintArea } from '../pages/ComplaintArea';
+import { MapScreen } from '../pages/MapScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +42,7 @@ export function AppRoutes() {
       <Stack.Screen name='NearbyHospitals' component={NearbyHospitals} options={{ headerShown: false }} />
       <Stack.Screen name='Specialtys' component={Specialtys} options={{ headerShown: false }} />
       <Stack.Screen name='ComplaintArea' component={ComplaintArea} options={{ headerShown: false }} />
+      <Stack.Screen name='MapScreen' component={MapScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
 
   );
