@@ -40,7 +40,7 @@ color: ${(props) => props.theme.colors.DarkGray};
 
 `
 export const WhatsHappend = styled.View`
-margin-top: 40px;
+margin-top: 20px;
 align-items: center;
 
 `

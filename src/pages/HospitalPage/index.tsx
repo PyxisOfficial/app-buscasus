@@ -192,7 +192,7 @@ export function HospitalPage({ route }) {
         </Services>
 
         <Footer>
-          <Button Title='Definir rota' onPress={() => navigation.navigate('Dashboard')} />
+          <Button Title='Definir rota' onPress={() => navigation.navigate('MapScreen')} />
         </Footer>
 
       </Filds>

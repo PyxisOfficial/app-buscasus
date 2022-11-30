@@ -23,6 +23,7 @@ import { Cadastro } from '../pages/Cadastro';
 import { Login } from '../pages/Login';
 import { ComplaintArea } from '../pages/ComplaintArea';
 import { MapScreen } from '../pages/MapScreen';
+import { SpecialtyHospitals } from '../pages/SpecialtyHospitals';
 
 export function DrawerRoutes() {
     return (
@@ -46,6 +47,7 @@ export function DrawerRoutes() {
             <Drawer.Screen name='Duty' component={Duty} options={{ headerShown: false, drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='ComplaintArea' component={ComplaintArea} options={{ headerShown: false , drawerItemStyle: { height: 0 } }} />
             <Drawer.Screen name='MapScreen' component={MapScreen} options={{ headerShown: false , drawerItemStyle: { height: 0 } }} />
+            <Drawer.Screen name='SpecialtyHospitals' component={SpecialtyHospitals} options={{ headerShown: false , drawerItemStyle: { height: 0 } }} />
         </Drawer.Navigator>
 
     );

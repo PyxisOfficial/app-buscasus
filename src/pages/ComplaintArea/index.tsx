@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { ControlledInputComplaint } from '../../components/ControlledInputComplaint';
 import axios from 'axios';
+import { TouchableWithoutFeedback, Keyboard, Alert, KeyboardAvoidingView } from 'react-native';
 
 import {
     Container,
@@ -64,26 +65,47 @@ export function ComplaintArea({ route }: any) {
         urlHospital,
         idHospital,
     } = route.params;
- 
+
 
     const [selected, setSelected] = useState('');
 
+    const HospitalData = [
+        { key: '1', value: 'Hospital Geral de Guaianases' },
+        { key: '2', value: 'Hospital Delphina Rinaldi Abdel Aziz' },
+        { key: '3', value: 'Hospital Rio Mar' },
+        { key: '4', value: 'Hospital Santa Marcelina' },
+        { key: '5', value: 'Hospital Albert Einstein' },
+        { key: '6', value: 'Hospital Getúlio Vargas' },
+        { key: '7', value: 'Hospital Central de Guaianases' },
+        { key: '8', value: 'Hospital Municipal Souza Aguiar' },
+        { key: '9', value: 'Hospital Universitário Francisca Mendes' },
+        { key: '10', value: 'Hospital Adventista de Manaus' },
+        { key: '11', value: 'Hospital São Miguel' },
+    ]
     const data = [
-        { key: '1', value: 'Exemplo 1' },
-        { key: '2', value: 'Exemplo 2' },
-        { key: '3', value: 'Exemplo 3' },
-        { key: '4', value: 'Exemplo 4' },
-     
+        { key: '1', value: 'Má Higiene' },
+        { key: '2', value: 'Mau atendimento' },
+        { key: '3', value: 'Falta de Médicos' },
+        { key: '4', value: 'Falta de insumos' },
+        { key: '5', value: 'Demora no atendimento' },
+        { key: '6', value: 'Descumprimento de cronograma' },
+        { key: '7', value: 'Falta de equipamentos necessários' },
+
+
     ]
 
+
+    const [dataType, setDataType] = useState('')
     async function handleSubmitComplaint(form: FormData) {
+
+
         const formComplaint = new FormData();
 
         formComplaint.append('emailUsuario', 'LeandroCoelho@gmail.com');
-        formComplaint.append('tipoReclamacao', 'ESTADO QUE ARMAZENA O TIPO');
+        formComplaint.append('tipoReclamacao', dataType);
         formComplaint.append('txtReclamacao', form.Complaint);
-        formComplaint.append('dataReclamacao', 'gerada automaticamente');
-        formComplaint.append('dataPlantao', '?');
+
+
 
         await axios.post('http://192.168.15.45/buscaSus/api/area-usuario/Reclamacao/', formComplaint,
             {
@@ -91,12 +113,16 @@ export function ComplaintArea({ route }: any) {
                     'Content-Type': 'multipart/form-data',
                 }
             });
+
     }
 
 
     return (
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <Container>
+            
             <Filds>
+            <KeyboardAvoidingView behavior="position" enabled>
                 <Header>
                     <Return
                         onPress={() => navigation.navigate('HospitalPage', {
@@ -139,8 +165,20 @@ export function ComplaintArea({ route }: any) {
                     boxStyles={{ borderRadius: 10, borderColor: '#45CA99', margin: 40, marginBottom: 0 }}
                     dropdownStyles={{ borderRadius: 10, borderColor: '#45CA99', margin: 40, marginBottom: 0 }}
                     placeholder='Selecione o motivo'
+                    onSelect={() => setDataType(selected)}
 
                 />
+                <SelectList
+                    setSelected={(item: any) => setSelected(item)}
+                    data={HospitalData}
+                    save="value"
+                    boxStyles={{ borderRadius: 10, borderColor: '#45CA99', margin: 40, marginBottom: 0 }}
+                    dropdownStyles={{ borderRadius: 10, borderColor: '#45CA99', margin: 40, marginBottom: 0 }}
+                    placeholder='Selecione o Hospital'
+                    onSelect={() => setDataType(selected)}
+
+                />
+                </KeyboardAvoidingView>
             </Filds>
             <Footer>
                 <Button
@@ -148,6 +186,8 @@ export function ComplaintArea({ route }: any) {
                     onPress={handleSubmit(handleSubmitComplaint)}
                 />
             </Footer>
+            
         </Container>
-    );
+   </TouchableWithoutFeedback> 
+   );
 }

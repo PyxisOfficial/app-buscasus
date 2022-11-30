@@ -64,7 +64,7 @@ export function Specialtys() {
             renderItem={({ item }) => (
 
               <SpecialtyView
-                onPress={() => navigation.navigate('AllDoctors')}
+                onPress={() => navigation.navigate('SpecialtyHospitals')}
               >
 
 
