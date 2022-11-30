@@ -88,7 +88,7 @@ export const SpecialtyIcon = styled(MaterialCommunityIcons)`
 `
 export const SpecialtyName = styled.Text`
 
-font-family: ${(props) => props.theme.Fonts.Bold} ;
+font-family: ${(props) => props.theme.Fonts.SemiBold} ;
 font-size: ${RFValue(12)}px;
 color: ${(props) => props.theme.colors.DarkGray};
 

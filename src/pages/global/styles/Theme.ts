@@ -28,6 +28,7 @@ export default {
 
         Regular: 'Poppins_300Light',
         Medium: 'Poppins_500Medium',
+        SemiBold: 'Poppins_600SemiBold',
         Bold: 'Poppins_700Bold',
     }
 

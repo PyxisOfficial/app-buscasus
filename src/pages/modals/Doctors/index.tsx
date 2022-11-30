@@ -39,7 +39,7 @@ export function Doctors({route}) {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://192.168.15.45/buscaSus/api/area-hospital/medico/', 
+      axios.get('http://192.168.56.1:8080/buscaSus/api/area-hospital/medico/', 
         {
             params: {
             idHospital: idHospital
@@ -64,7 +64,7 @@ export function Doctors({route}) {
 
               <DoctorInfo>
 
-                <DoctorPhoto source={{uri: 'http://192.168.15.45/buscaSus/api/area-hospital/img/' + item.fotoMedico}}/>
+                <DoctorPhoto source={{uri: 'http://192.168.56.1:8080/buscaSus/api/area-hospital/img/' + item.fotoMedico}}/>
 
                 <Info>
 

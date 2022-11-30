@@ -27,13 +27,13 @@ export function Specialtys() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://192.168.15.45/buscaSus/api/area-admin/especialidade/')
+    axios.get('http://192.168.56.1:8080/buscaSus/api/area-admin/especialidade/')
       .then((response) => { setData(response.data); })
   }, []);
 
 
   useEffect(() => {
-    axios.get('http://192.168.15.45/buscaSus/api/area-admin/especialidade/', {
+    axios.get('http://192.168.56.1:8080/buscaSus/api/area-admin/especialidade/', {
       params: {
         search: search,
         }

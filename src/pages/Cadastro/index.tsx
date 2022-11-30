@@ -82,7 +82,7 @@ export function Cadastro() {
     formData.append('cpfUsuario', cpf.format(form.CPF))
 
     if(form.ConfPassword == form.Password && cpf.isValid(form.CPF) &&  form.name != '' && form.email != '' && form.Password != ''){
-    await axios.post('http://192.168.15.45/buscaSus/api/area-usuario/usuario/', formData,
+    await axios.post('http://192.168.56.1:8080/buscaSus/api/area-usuario/usuario/', formData,
       {
         headers: {
           'Content-Type': 'multipart/form-data',
