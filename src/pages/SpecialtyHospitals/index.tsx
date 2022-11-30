@@ -99,8 +99,6 @@ export function SpecialtyHospitals() {
               </HospitalView>
             )}
           />
-
-
         </Container>
       </TouchableWithoutFeedback>
       <TabBar />
